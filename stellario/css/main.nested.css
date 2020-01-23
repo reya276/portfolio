@@ -1,0 +1,450 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@font-face {
+  font-family: 'latoregular';
+  src: url("./../fonts/lato/lato-regular-webfont.woff2") format("woff2"), url("./../fonts/lato/lato-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+@font-face {
+  font-family: 'latobold';
+  src: url("./../fonts/lato/lato-bold-webfont.woff2") format("woff2"), url("./../fonts/lato/lato-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+@font-face {
+  font-family: 'latoblack';
+  src: url("./../fonts/lato/lato-black-webfont.woff2") format("woff2"), url("./../fonts/lato/lato-black-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+@font-face {
+  font-family: 'robotoregular';
+  src: url("./../fonts/roboto-regular-webfont.eot");
+  src: url("./../fonts/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("./../fonts/roboto-regular-webfont.woff") format("woff"), url("./../fonts/roboto-regular-webfont.ttf") format("truetype"), url("./../fonts/roboto-regular-webfont.svg#robotoregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+@font-face {
+  font-family: 'robotomedium';
+  src: url("./../fonts/roboto-medium-webfont.eot");
+  src: url("./../fonts/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("./../fonts/roboto-medium-webfont.woff") format("woff"), url("./../fonts/roboto-medium-webfont.ttf") format("truetype"), url("./../fonts/roboto-medium-webfont.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/*---- Stellar Font Logo -----*/
+@font-face {
+  font-family: 'stellar';
+  src: url("./../fonts/stellar.eot");
+  src: url("./../fonts/stellar.eot?#iefix") format("embedded-opentype"), url("./../fonts/stellar.woff") format("woff"), url("./../fonts/stellar.ttf") format("truetype"), url("./../fonts/stellar.svg#stellar") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/*---- Linux Font Logos -----*/
+@font-face {
+  font-family: 'tuxlogos';
+  src: url("./../fonts/tuxlogos.eot");
+  src: url("./../fonts/tuxlogos.eot?#iefix") format("embedded-opentype"), url("./../fonts/tuxlogos.woff") format("woff"), url("./../fonts/tuxlogos.ttf") format("truetype"), url("./../fonts/tuxlogos.svg#tuxlogos") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+html {
+  font: 75%/150%;
+  font-family: "latoregular," sans-serif;
+  color: #333333; }
+  html body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-smoothing: antialiased;
+    background-color: #ffffff; }
+    html body h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #741f8a; }
+    html body h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #741f8a; }
+    html body h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #741f8a; }
+    html body h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #212121; }
+    html body h5 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #212121; }
+    html body .h-special-a {
+      font-size: 18px;
+      font-weight: 600;
+      color: #741f8a;
+      padding: 20px 0 5px; }
+    html body .h-special-b {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+      padding: 20px 0 5px; }
+    html body ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      html body ul li {
+        padding: 8px;
+        font-size: 16px;
+        color: #2E2632; }
+    html body p {
+      padding: 0 10px; }
+    html body .p-special {
+      font-size: 16px;
+      color: #ffffff; }
+    html body a:link {
+      color: #397eb9; }
+    html body a:visited {
+      color: #2E2632; }
+    html body a:hover {
+      color: #5b4b77; }
+
+.navbar {
+  margin-bottom: 0;
+  background-color: #2E2632;
+  z-index: 9999;
+  border: 0;
+  font-family: "latoregular," sans-serif !important;
+  line-height: 1.42857 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+  padding: 0; }
+
+.nav-link {
+  font-size: 12px;
+  padding: 10px 6px;
+  display: inline-block;
+  padding: 0; }
+
+.navbar .navbar-brand,
+.navbar li a {
+  color: #ffffff !important;
+  padding: 10px 6px; }
+
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+  color: #ffffff !important;
+  padding: 10px 6px; }
+
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #ffffff !important;
+  background-color: #2E2632; }
+
+.open .dropdown-toggle {
+  color: #ffffff !important;
+  background-color: #827c84 !important; }
+
+.dropdown-menu li a {
+  color: #ffffff !important;
+  background-color: #2E2632;
+  padding: 10px 6px; }
+
+.dropdown-menu li a:hover {
+  background-color: #827c84 !important;
+  padding: 10px 6px; }
+
+.navbar-brand {
+  font-family: "latoregular," sans-serif !important;
+  color: #ffffff !important;
+  font-size: 10px;
+  display: inline; }
+
+.navbar-nav > li > .dropdown-menu {
+  background-color: #2f2632; }
+
+.underline--magical {
+  background-image: linear-gradient(120deg, #7974AB 25%, #c86464 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.0em;
+  background-position: 0 88%;
+  transition: background-size 0.15s ease-in; }
+  .underline--magical:hover {
+    background-size: 100% 88%; }
+
+/*----- Material Icons class -----*/
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+  float: left;
+  margin: 2px 5px 0 0;
+  cursor: pointer; }
+
+.material-icons.md-24 {
+  font-size: 24px;
+  float: left;
+  margin: -2px 5px 0;
+  cursor: pointer; }
+
+.material-icons.md-36 {
+  font-size: 36px;
+  float: left;
+  margin: -10px 5px 0;
+  cursor: pointer; }
+
+.material-icons.md-48 {
+  font-size: 200px;
+  cursor: pointer; }
+
+.material-icons.md-50 {
+  font-size: 50px;
+  cursor: pointer; }
+
+.material-icons.md-12 {
+  font-size: 18px;
+  float: left;
+  margin: 0 5px;
+  cursor: pointer; }
+
+.material-icons.md-13 {
+  font-size: 24px;
+  float: none;
+  margin: 0 5px;
+  cursor: pointer;
+  color: #00897b; }
+
+.material-icons.md-14 {
+  font-size: 24px;
+  float: none;
+  margin: 0 5px;
+  cursor: pointer;
+  color: #ef5350; }
+
+.material-icons.md-10 {
+  font-size: 16px;
+  float: left;
+  margin: 0 5px;
+  cursor: pointer;
+  color: #1976d2; }
+
+.material-icons.md-11 {
+  font-size: 18px;
+  fon-weight: bold;
+  float: left;
+  margin: -5px 5px 0;
+  cursor: pointer; }
+
+[class*='lix-']:before {
+  display: inline-block;
+  font-family: 'tuxlogos';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 1;
+  float: left;
+  margin: 2px 5px 0 0; }
+
+[class*='logo-']:before {
+  display: inline-block;
+  font-family: 'stellar';
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.logo-stellar1:before {
+  content: '\0041'; }
+
+.lix-arch1:before {
+  content: '\0041'; }
+
+.lix-centos1:before {
+  content: '\0042'; }
+
+.lix-apple1:before {
+  content: '\0043'; }
+
+.lix-debian2:before {
+  content: '\0044'; }
+
+.lix-elogo1:before {
+  content: '\0045'; }
+
+.lix-freebsd1:before {
+  content: '\0046'; }
+
+.lix-fedora1:before {
+  content: '\0047'; }
+
+.lix-android1:before {
+  content: '\004c'; }
+
+.lix-mint1:before {
+  content: '\004d'; }
+
+.lix-redhat1:before {
+  content: '\0052'; }
+
+.lix-opensuse1:before {
+  content: '\0053'; }
+
+.lix-ubuntu1:before {
+  content: '\0055'; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+#logo {
+  position: relative;
+  top: 0;
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 5px; }
+
+.logodiv {
+  position: relative;
+  top: -20px; }
+  .logodiv h1 {
+    position: relative;
+    top: -30px;
+    font-size: 32px; }
+  .logodiv .logotxt {
+    position: relative;
+    top: -30px;
+    font-weight: 600; }
+
+.container {
+  padding: 0; }
+
+.container-fluid {
+  padding: 0; }
+
+.jumbotron {
+  background-color: #c86464;
+  border-radius: 0;
+  radius: 0;
+  border: 0;
+  height: 650px;
+  z-index: 2; }
+
+.bgimg {
+  background-image: url("./../img/jumbotron/documents.jpeg");
+  background-size: cover;
+  background-blend-mode: lighten;
+  z-index: 3; }
+
+#postit {
+  position: relative;
+  top: -70px;
+  left: 78%;
+  width: 350px;
+  height: 350px;
+  text-align: canter;
+  background-image: url("./../img/postit.png");
+  background-size: cover;
+  transform: rotate(20deg);
+  z-index: 4; }
+  #postit .content {
+    position: relative;
+    top: 90px;
+    left: 20%;
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    transform: rotate(-15deg);
+    border: 1px dotted #666;
+    font-family: "Indie Flower";
+    font-size: 18px; }
+
+#linediv {
+  position: relative;
+  top: -32px;
+  left: 0;
+  height: 2px;
+  background-color: #5b4b77;
+  background-blend-mode: overlay;
+  opacity: 0.98;
+  z-index: 2; }
+
+#oss {
+  position: relative;
+  top: -32px;
+  width: 100%;
+  height: auto;
+  display: inline-flex;
+  padding: 0 0 20px;
+  z-index: 3; }
+  #oss .ossimg-a {
+    float: left;
+    width: 350px;
+    height: 300px;
+    background-image: url("./../img/oss.jpg");
+    background-size: cover;
+    background-position: left; }
+  #oss .oss-a {
+    width: 43%;
+    height: 300px;
+    padding: 8px 20px;
+    background-color: #f6f6f6; }
+    #oss .oss-a .txtcontainer {
+      padding-left: 20px; }
+  #oss .ossimg-b {
+    float: left;
+    width: 350px;
+    height: 300px;
+    background-image: url("./../img/nonoss.jpg");
+    background-size: cover;
+    background-position: left; }
+  #oss .oss-b {
+    text-align: left;
+    width: 43%;
+    height: 300px;
+    padding: 8px 20px;
+    background-color: #2E2632; }
+    #oss .oss-b .txtcontainer {
+      padding-left: 20px; }

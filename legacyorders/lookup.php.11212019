@@ -1,0 +1,507 @@
+<?php
+//Start the session
+session_start();
+
+//Set currency format
+setlocale(LC_MONETARY, 'en_US');
+// DB connection
+include "data/db_conn.php";
+
+//Set the session expire time
+$duration = 30;
+//check if the session has expired
+if (isset($_SESSION['lastactive'])) {
+    //check how many seconds have passed
+    //since the user was last active.
+    $secondsInactive = time() - $_SESSION['lastactive'];
+    //COnvert minutes to seconds
+    $expireAfterSeconds = $duration * 60;
+    //Check if they have been inactive too long
+    if($secondsInactive >= $expireAfterSeconds) {
+        //Kill the session fpr the user
+        session_unset();
+        session_destroy();
+        header('Location:  customer_login.php?errmsg=ER3');
+    }
+}
+// $_POST["lsearch"] = "";
+$queryA = "";
+$resultsA = "";
+$userid = '';
+$lsearch = "";
+
+if (isset($_SESSION["userid"])) {
+        //If islogin is 2 then query by the URL userid
+        if ( isset($_SESSION["islogin"]) == 2 ) {
+                $userid = $_SESSION['userid'];
+                if ( isset($_POST['lsearch']) == "" ) {
+                    $queryA = "SELECT o.order_date,
+                                    o.order_status,
+                                    o.post_title,
+                                    o.userid,
+                                    o.email,
+                                    o.customer_name,
+                                    o2.order_id,
+                                    o2.total,
+                                    o.name
+                                FROM
+                                    OrdersByUsers o
+                                INNER JOIN OrdersByTotals o2 ON
+                                    o.order_id = o2.order_id
+                                WHERE
+                                    (o.userid = '".$userid."')
+                                ORDER BY o2.order_id, o.order_date, o.order_status DESC";
+                        $resultsA = $connProd->query($queryA);
+
+                } else if ( isset($_POST['lsearch']) != "" ) {
+                    $lsearch = $_POST['lsearch'];
+                    $queryA = "SELECT o.order_date,
+                                    o.order_status,
+                                    o.post_title,
+                                    o.userid,
+                                    o.email,
+                                    o.customer_name,
+                                    o2.order_id,
+                                    o2.total,
+                                    o.name
+                                FROM
+                                    OrdersByUsers o
+                                INNER JOIN OrdersByTotals o2 ON
+                                    o.order_id = o2.order_id
+                                WHERE
+                                    (o2.order_id = '".$lsearch."'
+                                    OR o.email LIKE '%".$lsearch."%'
+                                    OR o.name LIKE '%".$lsearch."%') AND (o.userid = '".$userid."')
+                                ORDER BY o2.order_id, o.order_date, o.order_status DESC";
+                    $resultsA = $connProd->query($queryA);
+                }
+                echo '<div id="testid">Session ID is: '.$_SESSION["islogin"].'- Searched for: '.$lsearch.'</div>';
+        } else if ( isset($_SESSION["islogin"]) == 1 ) {
+            if ( isset($_POST["lsearch"]) != "" ) {
+                $lsearch = $_POST["lsearch"];
+                $queryA = "SELECT o.order_date,
+                                o.order_status,
+                                o.post_title,
+                                o.userid,
+                                o.email,
+                                o.customer_name,
+                                o2.order_id,
+                                o2.total,
+                                o.name
+                            FROM
+                                OrdersByUsers o
+                            INNER JOIN OrdersByTotals o2 ON
+                                o.order_id = o2.order_id
+                            WHERE
+                                (o2.order_id = '".$lsearch."'
+                                OR o.email LIKE '%".$lsearch."%'
+                                OR o.name LIKE '%".$lsearch."%')
+                            ORDER BY o2.order_id, o.order_date, o.order_status DESC";
+
+                    $resultsA = $connProd->query($queryA);
+                // $resultsA = $connProd->query($queryA);
+                 //print_r($resultsA);
+            }
+            echo '<div id="testid">Session ID is: '.$_SESSION["islogin"].'- Searched for: '.$lsearch.'</div>';
+        }
+}
+
+
+//Set the current timestamp as user's last active
+$_SESSION['lastactive'] = time();
+
+ ?>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Legacy Orders - Bang-Energy</title>
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="assets/fonts/font-awesome/css/all.css"/>
+        <script>
+
+        var getOrder;
+        var server = location.hostname+"/bang-us/shop/";
+        $(document).ready(function() {
+            getOrder = function(orderidx) {
+                    var order_id = orderidx;
+                    console.log("Order_ID: "+order_id);
+                    //Order Customer Data
+                    $.ajax({
+                        type:'GET',
+                        url:'data/get_order.php',
+                        dataType: "json",
+                        data:{order_id:order_id},
+                        success:function(orderdata){
+                            console.log("Order Data From DB: " + JSON.stringify(orderdata.results));
+
+                            if (orderdata.status == 'ok'){
+                                $('#OrderID').text("#"+orderdata.results.OrderID);
+                                //String split for item name
+                                var str = orderdata.results.ItemName;
+                                var ItemName = str.replace(" ", "-");
+                                //Colorcode the status $output
+                                switch (orderdata.results.OrderStatus) {
+                                    case "wc-completed":
+                                        $('#OrderStatus').html("Status: <br/><span style='color:#2e7d32;font-weight:500;'>" + orderdata.results.OrderStatus + "</span>");
+                                    break;
+                                    case "wc-cancelled":
+                                        $('#OrderStatus').html("Status: <br/><span style='color:#d84315;font-weight:500;'>" + orderdata.results.OrderStatus + "</span>");
+                                    break;
+                                    case "wc-failed":
+                                        $('#OrderStatus').html("Status: <br/><span style='color:#dd2c00;font-weight:500;'>" + orderdata.results.OrderStatus + "</span>");
+                                    break;
+                                    case "wc-on-hold":
+                                        $('#OrderStatus').html("Status: <br/><span style='color:#1565c0;font-weight:500;'>" + orderdata.results.OrderStatus + "</span>");
+                                    break;
+                                    case "wc-processing":
+                                        $('#OrderStatus').html("Status: <br/><span style='color:#ef6c00;font-weight:500;'>" + orderdata.results.OrderStatus + "</span>");
+                                    break;
+                                    case "wc-refunded":
+                                        $('#OrderStatus').html("Status: <br/><span style='color:#d84315;font-weight:500;'>" + orderdata.results.OrderStatus + "</span>");
+                                    break;
+                                    default:
+                                        $('#OrderStatus').html("Status: <br/><span style='color:#dd2c00;font-weight:500;'>No Data</span>");
+                                }
+
+
+                                if (orderdata.results.BAddress2 === null && orderdata.results.SAddress2 === null) {
+                                    var BAddress2 = '';
+                                    var SAddress2 = '';
+                                    $('#DateCreated').text("Date Created: "+orderdata.results.OrderDate);
+                                    $('#Billing').html(orderdata.results.FNBilling +" " +orderdata.results.LNBilling + "<br/>"+
+                                    orderdata.results.BAddress1 + "<br/>" + BAddress2 +"<br/>"+ orderdata.results.BCity +", "+orderdata.results.BState + orderdata.results.BZipcode);
+                                    $('#Shipping').html(orderdata.results.FNShipping +" " +orderdata.results.LNShipping + "<br/>"+
+                                    orderdata.results.SAddress1 + "<br/>" + SAddress2 +"<br/>"+ orderdata.results.SCity +", "+orderdata.results.SState + orderdata.results.SZipcode);
+                                    $('#EmailAddress').html("Email Address: <br/><a href='mailto:" + orderdata.results.BEmail + "'>" + orderdata.results.BEmail + "</a>");
+                                    //$('#OrderItems').html("<a href='http://"+server+ItemName+"' target='_blank' title='"+orderdata.results.ItemName+"'>"+orderdata.results.ItemName+"</a>");
+                                    $('#OrderCost').html("$"+orderdata.results.OTotal);
+                                    $('#ItemCost').html("$"+orderdata.results.OTotal);
+                                    $('#Customer').html("Customer: "+orderdata.results.FNBilling + " " +orderdata.results.LNBilling);
+                                } else {
+                                    $('#DateCreated').text("Date Created: "+orderdata.results.OrderDate);
+                                    $('#Billing').html(orderdata.results.FNBilling +" " +orderdata.results.LNBilling + "<br/>"+
+                                    orderdata.results.BAddress1 + "<br/>" + orderdata.results.BAddress2 +"<br/>"+ orderdata.results.BCity +", "+orderdata.results.BState + orderdata.results.BZipcode);
+                                    $('#Shipping').html(orderdata.results.FNShipping +" " +orderdata.results.LNShipping + "<br/>"+
+                                    orderdata.results.SAddress1 + "<br/>" + orderdata.results.SAddress2 +"<br/>"+ orderdata.results.SCity +", "+orderdata.results.SState + orderdata.results.SZipcode);
+                                    $('#EmailAddress').html("Email Address: <br/><a href='mailto:" + orderdata.results.BEmail + "'>" + orderdata.results.BEmail + "</a>");
+                                    //$('#OrderItems').html("<a href='http://"+server+ItemName+"' target='_blank' title='"+orderdata.results.ItemName+"'>"+orderdata.results.ItemName+"</a>");
+                                    $('#OrderCost').html("$"+orderdata.results.OTotal);
+                                    $('#ItemCost').html("$"+orderdata.results.OTotal);
+                                    $('#Customer').html("Customer: "+orderdata.results.FNBilling + " " +orderdata.results.LNBilling);
+                                }
+
+                            } else {
+                            //     // $('.user-content').slideUp();
+                               alert("User not found...");
+                            }
+                        }
+                    });
+                    //Order Items Data
+                    $.ajax({
+                        type:'GET',
+                        url:'data/legacy_orders.php',
+                        dataType: "json",
+                        data:{order_id:order_id},
+                        success:function(itemsdata){
+                            if (itemsdata.status = 'ok') {
+                                var items = "";
+                                var qtys = "";
+                                $.each(itemsdata, function (index, value) {
+                                    //console.log(value);
+                                    if (typeof value.itemid === 'undefined') {
+                                        items += "<div id='0'>0</div>";
+                                        qtys += "<div id='None'>x 0</div>";
+                                    } else {
+                                        items += value.OIName+" <br/>";
+                                        qtys += "x "+value.OQty+" <br/>";
+                                        console.log("Item Data From DB: [" + JSON.stringify(itemsdata) + "]");
+                                        $('#OrderItems').html(items);
+                                        $('#OrderQTY').html(qtys);
+                                    }
+
+                                });
+
+
+                            }
+                        }
+                    });
+                    //Shipping Data
+                    $.ajax({
+                        type:'GET',
+                        url:'data/legacy_shipping.php',
+                        dataType: "json",
+                        data:{order_id:order_id},
+                        success:function(itemsship){
+                            if (itemsship.status = 'ok') {
+                                var itemname = "";
+                                var shipping = "";
+                                var shipqty = "";
+                                $.each(itemsship, function (index, value) {
+                                    //console.log(value);
+                                    if (typeof value.order_item_name === 'undefined') {
+                                        itemname += "<div id='OrderShipping'>None</div>";
+                                        shipping += "<div id='ShippingCost'>$0.00</div>";
+                                    } else {
+                                        itemname += value.order_item_name+" <br/>";
+                                        shipping += value.cost+" <br/>";
+                                        console.log("Item Data From DB: [" + JSON.stringify(itemsship) + "]");
+                                        $('#OrderShipping').html(itemname);
+                                        $('#ShipCost').html(shipping);
+                                        $('#ShippingCost').html("$"+shipping);
+                                        $('#ShipQTY').html(shipqty);
+                                    }
+
+                                });
+
+
+                            }
+                        }
+                    });
+                    //Coupon Data
+                    $.ajax({
+                        type:'GET',
+                        url:'data/legacy_coupons.php',
+                        dataType: "json",
+                        data:{order_id:order_id},
+                        success:function(coupondata){
+                            if (coupondata.status = 'ok') {
+                                //console.log("For Coupons: "+order_id);
+                                var coupon_name = "";
+                                var coupon_amt = "";
+                                var OrderID = "";
+                                var coupon_tot = "";
+                                $.each(coupondata, function (index, value) {
+                                    //console.log(value);
+                                    if (typeof value.OrderID === 'undefined') {
+                                        coupon_name += "<div>None</div>";
+                                        coupon_amt += "<div>$0.00</div>";
+                                        coupon_tot += "<div>$0.00</div>";
+                                    } else {
+                                        coupon_name += value.coupon_name;
+                                        coupon_amt += value.coupon_amt;
+                                        coupon_tot += value.coupon_tot;
+                                        console.log("Coupon Data From DB: [" + JSON.stringify(coupondata) + "]");
+                                        $('#OrderCoupon').html(coupon_name);
+                                        $('#CouponAmt').html("$"+coupon_amt);
+                                        $('#CouponToT').html("$"+coupon_tot);
+                                    }
+
+                                });
+
+
+                            }
+                        }
+
+                    });
+
+                }
+        });
+
+        </script>
+    </head>
+    <body>
+        <form action="lookup.php" method="POST" id="form-login">
+            <?php
+                if ($_SESSION['islogin'] == 2) {
+                    if (isset($_GET['userid'])) {
+                        echo '<input type="hidden" name="userid" id="userid" value="'.$_GET['userid'].'"/>';
+                    } else {
+                        echo '<input type="hidden" name="userid" id="userid" value="'.$_POST['userid'].'"/>';
+                        echo '<input type="hidden" name="lsearch" id="lsearch" value="'.$_POST['lsearch'].'"/>';
+
+                        //print_r($lsearch);
+                    }
+                } else if ($_SESSION['islogin'] == 1) {
+                    echo '<input type="hidden" name="userid" id="userid" value="'.$_SESSION['userid'].'"/>';
+                    if (isset($_POST['lsearch']) !="") {
+                        echo '<input type="hidden" name="lsearch" id="lsearch" value="'.$_POST['lsearch'].'"/>';
+                        //print_r($lsearch);
+                    }
+                }
+            ?>
+            <input type="hidden" name="islogin" id="islogin" value="<?php echo $_SESSION['islogin']; ?>"/>
+            <div id="header">
+                <span id="bang-logo"></span>
+                <h2 class="logout">
+                    <span>
+                        <a href="customer_logout.php?islogin=<?php echo $_SESSION["islogin"]; ?>" style="color:white;">Logout</a>
+                    </span>
+                </h2>
+            </div>
+            <div id="header-top"></div>
+            <div id="header-img"></div>
+            <div id="header-top"></div>
+            <div id="sub-header">
+
+                <?php if (isset($_SESSION['islogin']) == 1) {
+                    echo '<div id="search">';
+                    echo '<span class="search-txt">Order Search:</span>';
+                    if (isset($_POST['lsearch']) !=""){
+                        echo '<input type="text" id="input-search" name="lsearch" class="input-txt" value="'.$_POST['lsearch'].'" required="yes" placeholder="Enter the order number or customer name" />';
+                    } else {
+                        echo '<input type="text" id="input-search" name="lsearch" class="input-txt" value="" required="yes" placeholder="Enter the order number or customer name" />';
+                    }
+                    echo '<button type="submit" title="Search" class="button-txt"><i class="fas fa-search fa-lg"></i> Search</button>';
+                    echo '</div>';
+                } else {
+                    echo '<div id="search"></div>';
+                }?>
+                <div id="title">Legacy Orders</div>
+            </div>
+            <div id="errormsg"></div>
+            <div id="grid-main">
+                <div id="grid">
+                    <!-- Grid Rows -->
+                        <?php
+                        //echo "<div>This is for Admin (".$_POST["lsearch"]." - User Session ".$_SESSION['islogin'].").</div>";
+                            if ($resultsA = $connProd->query($queryA)) {
+                                if ($resultsA->num_rows !== 0) {
+                                echo '<div id="col-a" title="Order"><i class="fas fa-file-invoice fa-lg"></i> Orders</div>';
+                                echo '<div id="col-a" title="Date"><i class="fas fa-calendar-alt fa-lg"></i> Date</div>';
+                                echo '<div id="col-a" title="Status"><i class="fas fa-check-circle fa-lg"></i> Status</div>';
+                                echo '<div id="col-a" title="Origin"><i class="fas fa-map-pin fa-lg"></i> Origin</div>';
+                                echo '<div id="col-a" title="Total"><i class="fas fa-dollar-sign fa-lg"></i> Total</div>';
+                                    while($row = $resultsA->fetch_row()) {
+                                        echo '<div id="rows-a" style="text-align:left;color:#0074e8;" title="'.$row[6].'"><input type="button" class="button-link" data-toggle="modal" data-target="#usrDetail" name="orderNum" onclick="getOrder('.$row[6].');" value="'.$row[6].'"/></div>';
+                                        echo '<div id="rows-a" style="text-align:center;" title="'.$row[0].'">'.$row[0].'</div>';
+                                        echo '<div id="rows-a" style="text-align:center;" title="'.$row[1].'">'.$row[1].'</div>';
+                                        echo '<div id="rows-a" style="text-align:left;" title="'.$row[2].'">'.$row[2].'</div>';
+                                        echo '<div id="rows-a" style="text-align:right;color:#007239;" title="$'.$row[7].'">$'.$row[7].'</div>';
+
+                                    }
+                                } else if ($resultsA->num_rows === 0) {
+                                    echo '<div id="query-msg">No results found!</div>';
+
+                                }
+                            }
+                            $connProd->close();
+                        ?>
+                </div>
+            </div>
+        </form>
+        <!-- Begin fotter -->
+        <div id="footer-top"></div>
+        <div id="footer-main">
+            <span style="float:left;color:#fff;">Copyright &copy; 2019 Bang Energy | <a href="https://bang-energy.com" title="Bang Energy" style="color:#fff;" target="_blank">Bang Energy</a></span>
+            <span style="float:right;color:#fff;">All Rights Reserved Bang Energy</span>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="usrDetail" tabindex="-1" role="dialog" aria-labelledby="usrDetailTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered mw-100 w-50" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Order <span id="OrderID" style="color:red;"></span>  Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">General</th>
+                            <th scope="col">Billing</th>
+                            <th scope="col">Shipping</th>
+                            <th scope="col"></th>
+                            <th scope="col"scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    <thead>
+                    <tr>
+                        <td id="DateCreated" scope="row"></td>
+                        <td id="Billing" scope="row"></td>
+                        <td id="Shipping" scope="row"></td>
+                        <td scope="row"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td id="OrderStatus"></td>
+                        <td id="EmailAddress"></td>
+                        <td id="Customer" scope="row"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <table class="table">
+                                <thead>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Cost</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Total</th>
+                                </thead>
+                                <tr>
+                                    <td id="OrderItems"></td>
+                                    <td id="ItemCost"></td>
+                                    <td id="OrderQTY"></td>
+                                    <td id="OrderCost"></td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6">
+                            <table class="table">
+                                <thead>
+                                    <th scope="col">Shipping</th>
+                                    <th scope="col">Shipping Cost</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Total</th>
+                                </thead>
+                                <tr>
+                                    <td id="OrderShipping"></td>
+                                    <td id="ShipCost"></td>
+                                    <td id="ShipQTY"></td>
+                                    <td id="ShippingCost"></td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <table class="table">
+                                <thead>
+                                    <th scope="col">Coupon Name</th>
+                                    <th scope="col">Coupon Discount</th>
+                                    <th scope="col">Total</th>
+                                </thead>
+                                <tr>
+                                    <td id="OrderCoupon"></td>
+                                    <td id="CouponAmt"></td>
+                                    <td id="CouponToT"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-print="modal" title="Print"><i class="fas fa-print"></i> Print</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Close"><i class="fas fa-times-circle"></i> Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>

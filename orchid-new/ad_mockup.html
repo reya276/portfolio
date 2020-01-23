@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agency Dashboard Mock-Up</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     <script src="http://castor.orchidinsurance.com/wp-content/themes/orchid-new/assets/js/jquery_cookie.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+    //Load Personal Line Tiles
+    function loadPtiles(sort_order) {
+        //get the default state
+        var chosenstate = $.cookie('OrchidDash');
+        if (chosenstate != "all") {
+            var fstate = chosenstate;
+        } else {
+            var fstate = $("#fstate").val();
+        }
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (sort_order == 2){
+
+                    var sortlink = '<i class="fa fa-sort fa-lg" aria-hidden="true" onclick="loadPtiles(1);" title="Sort Tiles"></i>';
+                    $('#sortTrigP').html(sortlink);
+                    $('#rowP').html(this.responseText);
+                    console.log(sort_order, fstate);
+                } else if (sort_order == 1) {
+                    var sortlink = '<i class="fa fa-sort fa-lg" aria-hidden="true" onclick="loadPtiles(2);" title="Sort Tiles"></i>';
+                    $('#sortTrigP').html(sortlink);
+                    $('#rowP').html(this.responseText);
+                    console.log(sort_order, fstate);
+                } else {
+                    document.getElementById("rowP").innerHTML = this.responseText;
+                    console.log(this.responseText);
+                }
+            }
+        };
+        xmlhttp.open("GET", "get_ptiles.php?sort="+sort_order+"&fstate="+fstate, true);
+        xmlhttp.send();
+    }
+    //Load Commercial Line Tiles
+    function loadCtiles(sort_order) {
+        //get the default state
+        var chosenstate = $.cookie('OrchidDash');
+        if (chosenstate != "all") {
+            var fstate = chosenstate;
+        } else {
+            var fstate = $("#fstate").val();
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (sort_order == 2){
+                    var sortlink = '<i class="fa fa-sort fa-lg" aria-hidden="true" onclick="loadCtiles(1);" title="Sort Tiles"></i>';
+                    $('#sortTrigC').html(sortlink);
+                    $('#rowC').html(this.responseText);
+                    console.log(sort_order, fstate);
+                } else if (sort_order == 1) {
+                    var sortlink = '<i class="fa fa-sort fa-lg" aria-hidden="true" onclick="loadCtiles(2);" title="Sort Tiles"></i>';
+                    $('#sortTrigC').html(sortlink);
+                    $('#rowC').html(this.responseText);
+                    console.log(sort_order, fstate);
+                } else {
+                    document.getElementById("rowC").innerHTML = this.responseText;
+                    console.log(this.responseText);
+                }
+            }
+        };
+        xmlhttp.open("GET", "get_ctiles.php?sort="+sort_order+"&fstate="+fstate, true);
+        xmlhttp.send();
+    }
+    //Load State List
+    function loadStates() {
+        var chosenstate = $.cookie('OrchidDash');
+        if (chosenstate != "all") {
+            var fstate = chosenstate;
+        } else {
+            var fstate = $("#fstate").val();
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("fstate").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+        };
+        xmlhttp.open("GET", "get_ad_states.php?fstate="+fstate, true);
+        xmlhttp.send();
+        console.log("The Cookie state:"+fstate);
+    }
+    //Load Filter Functions
+    function loadProducts() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("products").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+        };
+        xmlhttp.open("GET", "get_ad_products.php", true);
+        xmlhttp.send();
+    }
+    function loadCatergories() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("categories").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+        };
+        xmlhttp.open("GET", "get_ad_categories.php", true);
+        xmlhttp.send();
+    }
+
+    //Products Filter
+    function prodChange() {
+        var product = $('[name="filterby"]:checked').val();
+        if (product == 0) {
+            $('.col-md-10 .ad-personal').removeClass('hidden');
+                $('.ad-personal').removeClass('expand');
+            $('.col-md-10 .ad-commercial').removeClass('hidden');
+                $('.ad-commercial').removeClass('expand');
+            console.log("Product: Personal");
+        } else if (product == 1) {
+            $('.ad-commercial').addClass('hidden');
+            $('.ad-personal').removeClass('hidden');
+            $('.ad-personal').addClass('expand');
+            console.log("Product: Personal"+product);
+        } else if (product == 2) {
+            $('.ad-personal').addClass('hidden');
+            $('.ad-commercial').removeClass('hidden');
+            $('.ad-commercial').addClass('expand');
+            console.log("Product: Commercial"+product);
+        }
+
+    }
+
+    </script>
+    <style>
+    /*---- Fonts ----*/
+@font-face {
+	font-family: 'GothamBook';
+	src: url('assets/fonts/GothamBook.eot');
+	src: local('assets/fonts/GothamBook'),
+	url('assets/fonts/GothamBook.woff') format('woff'),
+	url('assets/fonts/GothamBook.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+    /*-----------------------
+    General
+    -------------------------*/
+        body {
+        	padding:100px 0 0 0;
+        	margin:0;
+        	font-size:14px;
+        	line-height:1.4;
+        	color:#555555;
+        	font-family:'GothamLight', Arial, sans-serif;
+        	background:#ffffff;
+        	transition: all 0.5s cubic-bezier(0.07, 0.54, 0.58, 1) 0s;
+        }
+        html {
+        	position:relative;
+        	min-height:100%;
+
+        }
+        body.sticky {
+        	padding-top:95px;
+        }
+        body.style1 {
+        	padding-top:0;
+        }
+        .container-fluid {
+            background:#ffffff;
+        }
+        .expand {
+            width: 100% !important;
+        }
+        .href-nav{font-size:14px;color:#0057b8;text-decoration: none;}
+        .href-nav:hover{font-size:14px;color:#5A5A5A;text-decoration: none;}
+        a {
+        	color:#0057b8;
+        	text-decoration:underline;
+        }
+        a:hover,
+        a:focus {
+        	color:#5A5A5A !important;
+        	text-decoration:none;
+        }
+        a:active,
+        a:focus {
+          outline: 0;
+        }
+        a i,
+        .btn-group a,
+        .btn {
+        	text-decoration:none!important;
+        }
+
+        ::-moz-selection {
+        	color:#fff;
+        	background:#03457f;
+        }
+        ::selection {
+        	color:#fff;
+        	background:#03457f;
+        }
+
+        strong {
+        	font-weight:normal;
+        	font-family:'GothamMedium', Arial, sans-serif;
+        }
+        .btn:hover,
+        .btn:focus,
+        .btn:active,
+        .btn.active {
+        	outline: inherit !important;
+        }
+        .reset-bt {width:115px;height:40px;background-color:#f0f0f0f;padding:5px;border-radius:0;-moz-border-radius:0; -webkit-border-radius:0;border:0;}
+        .color-black {
+        	color:#000000;
+        }
+        .color-blue {
+        	color:#0057b8 !important;
+        }
+        .color-gray {
+        	color:#5A5A5A;
+        }
+        p,
+        ul,
+        ol {
+        	margin-bottom:10px;
+        }
+
+        .lead {
+        	font-size:18px;
+        	line-height:1.3;
+        }
+
+        .font16 {
+        	font-size:16px;
+        }
+
+        /*-----------------------
+        H1, H2
+        -------------------------*/
+        h1,
+        .h1 {
+        	margin:0 0 20px 0;
+        	color:#0057b8;
+        	font-size:36px;
+        	line-height:1.2;
+        	font-weight:normal;
+        	font-family:'GothamBook', Arial, sans-serif;
+        }
+        h2,
+        .h2 {
+        	margin:0 0 20px 0;
+        	color:#0057b8;
+        	font-size:24px;
+        	line-height:1.2;
+        	font-weight:normal;
+        	font-family:'GothamBook', Arial, sans-serif;
+        }
+        @media (max-width: 767px) {
+        	h1,
+        	.h1 {
+        		font-size:29px;
+        	}
+        }
+        /*-----------------------
+        AD navigation
+        -------------------------*/
+        .navbar-ad {
+            position:relative;
+            width:100%;
+            height:50px;
+            padding:15px;
+            text-align:right;
+            /* border:1px dotted #555; */
+        }
+        .navbar-ad > li {
+            position:relative;
+            list-style: none;
+            display: inline;
+        }
+        .navbar-ad > li > a {
+            color:#0057b8;
+        	text-decoration:none;
+        	font-size:16px;
+        	line-height:1.4;
+        	padding:5px 15px;
+        	font-family:'GothamBook', Arial, sans-serif;
+        	text-transform:uppercase;
+        	background:transparent;
+        }
+        .navebar-ad > li > a:hover,
+        .navbar-ad > li > a:focus {
+            color:#5A5A5A;
+        	background:transparent;
+        }
+        .navbar-ad > .active > a,
+        .navbar-ad > .active > a:hover,
+        .navbar-ad > .active > a:focus {
+            color:#5A5A5A;
+        	background:transparent;
+        }
+        /*-----------------------
+        AD Title and Existing Policies
+        -------------------------*/
+        .div-existing {
+            height:auto;
+            padding:15px;
+            /* border:1px dotted #555; */
+            font-family:'GothamBook', Arial, sans-serif;
+            margin-bottom:10px;
+        }
+        .div-newbiz {
+            height:auto;
+            padding:15px;
+            border:1px dotted #555;
+            background-color: #0056b9;
+            font-family:'GothamBook', Arial, sans-serif;
+        }
+        .ad-title-box {
+            width:30%;
+            height:230px;
+            /* border:1px dotted #ff8a80; */
+        }
+        .ad-title {
+            position: relative;
+            width:100%;
+            font-size:2.2em;
+            font-weight: 500;
+            color: #555;
+            padding:0px 0px 0px 20px;
+        }
+        .ad-subtitle {
+            position:relative;
+            width:100%;
+            font-size:18px;
+            font-weight: 400;
+            color: #555;
+            padding:0px 0px 0px 45px;
+            top:10px;
+        }
+        .ad-login-box {
+            height:230px;
+            border: 3px solid #F2F2F2;
+            padding:0;
+        }
+        .ad-login-caa {
+            width: auto;
+            height:227px;
+            z-index:1;
+        }
+        .ad-login-pp {
+            width: auto;
+            height:227px;
+            z-index:1;
+        }
+        .ad-login-conn {
+            width: auto;
+            height:227px;
+            z-index:1;
+        }
+        .ad-bt-login {
+            position:relative;
+            top:-65px;
+            left:16%;
+            background-color: #0056b9;
+            width:290px;
+            height:48px;
+            font-size: 1.2em;
+            color: #ffffff;
+            border:0;
+            z-index:99;
+        }
+        .ad-bt-login:hover {
+            background-color: #5A5A5A;
+        }
+        /* New Business Quote */
+        .ad-newquote {
+            color: #ffffff;
+            font-size:1.3em;
+            padding: 8px 0px 0px 100px;
+        }
+        .ad-property {
+            padding:8px;
+            width:98.9%;
+            color:#5a5a5a;
+            /* border:1px solid #cccccc; */
+            background-color:#ffffff;
+        }
+        .ad-df-location {
+            color: #ffffff;
+            font-size:0.9em;
+            padding: 5px 0px 0px 0px;
+        }
+        .locdefault {
+            position:relative;
+            top:4px;
+            left: 5px;
+        }
+        /* Filter & Products */
+        .ad-row-padding {
+            padding-top: 20px;
+        }
+        .ad-filters-box {
+            width: 9%;
+            height: 100%;
+            /* background-color: #F4F4F4; */
+            font-family:'GothamBook', Arial, sans-serif;
+            font-size:0.9em;
+            font-weight:normal;
+        }
+        .ad-filter-title{
+            font-weight: 600;
+            padding-top:10px;
+        }
+        /* AD Filter form inputs */
+        .ad-filters > li {
+            position: relative;
+            list-style: none;
+            font-size:0.9em;
+        }
+        #filterby {
+            position: relative;
+            top:3px;
+            left:5px;
+            margin-right: 5px;
+            padding:right: 5px;
+        }
+        .catchk{
+            position: relative;
+            top:3px;
+            left:5px;
+            margin-right: 10px;
+            padding-right: 10px;
+        }
+        .ad-products {
+            display:inline-block;
+            width:90%;
+            height:100%;
+            font-family:'GothamBook', Arial, sans-serif;
+            font-size:0.9em;
+            font-weight:normal;
+            /* border:1px dotted #666; */
+        }
+        .row-1{float:left;padding:5px 5px 5px 8px;width:98%;height: auto;background:#fff;}
+        .hidden {
+          display: none;
+        }
+        /* Personal Lines */
+        .ad-personal-title {
+            width:100%;
+            height: 60px;
+            background-color: #f4f4f4;
+            font-family:'GothamBook', Arial, sans-serif;
+            font-size: 1.1em;
+            font-weight:600;
+            color: #565656;
+            text-align: center;
+            padding-top: 20px;
+            margin-bottom: 2%;
+        }
+        .ad-tile-sort {
+            float:right;
+            text-align:right;
+            margin-right:5%;
+            color: #5a5a5a !important;
+            cursor: pointer;
+        }
+        .ad-personal {
+            position:relative;
+            width: 48.5%;
+            height:100%;
+            /* border:1px solid #ef6c00; */
+            margin-left: 1%;
+            padding:0;
+        }
+        .rowP {width:90%;background:#fff;margin:0 auto;padding:0;}
+        .filterrowP {width:100%; transition: all 0.5s ease; transform-style: preserve-3d;position: relative;}
+
+        /* Commercial Lines */
+        .ad-commercial-title {
+            width:100%;
+            height: 60px;
+            background-color: #f4f4f4;
+            font-family:'GothamBook', Arial, sans-serif;
+            font-size: 1.1em;
+            font-weight:600;
+            color: #565656;
+            text-align: center;
+            padding-top: 20px;
+            margin-bottom: 2%;
+        }
+        .ad-commercial {
+            position:relative;
+            width: 48.5%;
+            height:100%;
+            /* border:1px solid #c0ca33; */
+            margin-left: 1%;
+            padding:0;
+        }
+        .rowC {width:90%;background:#fff;margin:0 auto;padding: 0;}
+        .filterrowC {width:100%; transition: all 0.5s ease;}
+        /* Bootstrap Cols */
+        .ad-coming-soon{
+        	position:absolute;
+        	border-bottom:1px solid #333;
+        	color:#5a5a5a;font-size: 0.8em;
+        	text-align: center;
+        	z-index: 2147483647 !important;background: #5a5a5a/*#bcc0c3*/;opacity: 0.9;color:#ffffff;
+        	filter: alpha(opacity=90);height:auto;width:100%;
+        	padding:0;
+        	-webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    0px 2px 2px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         0px 2px 2px 0px rgba(50, 50, 50, 0.75);
+        }
+        .ad-tile{
+        	margin:0px 20px 20px 0px;
+        	display: inline-block;
+        	border:1px solid #7f83a3;
+        	width:160px;
+        	height:185px;
+        	border-radius: 0px;
+        	padding:0;
+        	background:#fff;
+        	/* box-shadow: 0 1px 2px rgba(0,123,180,0.15); */
+             box-shadow: 0 0 24px rgba(0,0,0,0.2);
+            transition: all 0.4s ease-in-out;
+        }
+        .ad-tileimg-a {
+            position:absolute;
+            width:158px;
+            height:auto;
+            cursor:pointer;
+            vertical-align:top;
+            z-index:1;
+            object-fit: cover;
+            top:0;left:0;
+        }
+        .ad-tileimg-a:hover {
+            position:absolute;
+            width:158px;
+            height:auto;
+            opacity: 0.5;
+            cursor:pointer;
+            vertical-align:top;
+            z-index:1;
+            object-fit: cover;
+            top:0;left:0;
+        }
+        .ad-tile-txt {
+            position:relative;
+            color:#666;
+            margin-top:100px;
+            width:159px;
+            height:auto;
+            padding:5px 3px 0px 3px;
+            text-align: center;
+            vertical-align:top;
+            z-index:99;
+            font-size:0.9em;
+            font-family: 'gothamlight',
+            Arial,sans-serif;
+        }
+        .ad-tile-txt:hover {
+            position:relative;
+            color:#004EB4;
+            margin-top:100px;
+            width:160px;
+            height:auto;
+            padding:5px 3px 0px 3px;
+            text-align: center;
+            z-index:99;
+            cursor:pointer;
+            font-size:0.9em;
+            font-family: 'gothamlight', Arial,sans-serif;
+        }
+        .row-margin {
+            margin-left:6.6%;
+        }
+        .col-sm-2 {
+            /* border:1px solid #4db6ac; */
+            margin-right: 10px;
+        }
+        .col-sm-4 {
+
+        }
+        .col-sm-4:hover{
+        	-webkit-transform: scale(1.1, 1.1);
+        	transform: scale(1.1, 1.1);
+        	background-color: rgba(0,123,180,0.3);
+        }
+        .col-sm-4:hover::after{
+        	opacity: 1;
+        }
+        .col-md-3 {
+            width: 23%;
+            margin-right: 20px;
+            /* border:1px solid #4db6ac; */
+        }
+
+        .col-md-10 {
+            /* width: 23%; */
+
+        }
+        .fa-arrow-right {
+            font-weight:normal;
+            padding: 0px 0px 0px 5px;
+            border:0px;
+        }
+        /*-----------------------
+        Modal
+        -------------------------*/
+        .modal {
+        	overflow-y:auto;
+        }
+        /*.modal-open {
+        	overflow:auto;
+        }*/
+        .modal-open[style] {
+        	padding-right:0px!important;
+        }
+        .modal-backdrop.in {
+        	filter:alpha(opacity=70);
+        	opacity:.7;
+        }
+        .modal-content {
+        	border:0;
+        	border-radius:0px;
+        	-webkit-box-shadow:none;
+        		box-shadow:none;
+        }
+        .modal-header {
+        	background:#fff;
+        	overflow:hidden;
+        }
+        .modal-header h4.modal-title {
+        	color:#000;
+        	font-weight:normal;
+        }
+        .modal-header button.close {
+        	width:30px;
+        	min-height:30px;
+        	padding:0;
+        	color:#738190;
+        	text-shadow:none;
+        	font-size:23px;
+        	line-height:1.0;
+        	opacity:1;
+          	filter:alpha(opacity=100);
+        	background:#d9dcdf;
+        }
+        .modal-header button.close:hover,
+        .modal-header button.close:focus {
+        	color:#738190;
+        	opacity:0.5;
+        	filter:alpha(opacity=50);
+        }
+
+        @media (min-width: 768px) {
+          .modal-sm {
+            width:450px;
+          }
+        }
+        /* Smartphones (portrait and landscape) ----------- */
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 480px) {
+        /* Styles */
+            .navbar-ad {
+                position:relative;
+                width:100%;
+                height:auto;
+                padding:15px;
+                text-align:center;
+                /* border:1px dotted #555; */
+            }
+            .navbar-ad > li {
+                position:relative;
+                list-style: none;
+                display: inline;
+            }
+            .navbar-ad > li > a {
+                color:#0057b8;
+            	text-decoration:none;
+            	font-size:12px;
+            	line-height:1.4;
+            	padding:5px 4px 5px 8px;
+            	font-family:'GothamBook', Arial, sans-serif;
+            	text-transform:uppercase;
+            	background:transparent;
+            }
+            .navebar-ad > li > a:hover,
+            .navbar-ad > li > a:focus {
+                color:#5A5A5A;
+            	background:transparent;
+            }
+            .navbar-ad > .active > a,
+            .navbar-ad > .active > a:hover,
+            .navbar-ad > .active > a:focus {
+                color:#5A5A5A;
+            	background:transparent;
+            }
+            .ad-newquote {
+                color: #ffffff;
+                font-size:1.3em;
+                padding: 8px 0px 0px 0px;
+                text-align:center;
+            }
+            .ad-property {
+                padding:8px;
+                width:98.9%;
+                color:#5a5a5a;
+                /* border:1px solid #cccccc; */
+                background-color:#ffffff;
+            }
+            .ad-df-location {
+                color: #ffffff;
+                font-size:0.9em;
+                padding: 5px 0px 0px 0px;
+            }
+            .locdefault {
+                position:relative;
+                top:4px;
+                left: 5px;
+            }
+            .ad-login-box {
+                width:100%;
+                height:230px;
+                border: 3px solid #F2F2F2;
+                padding:3px;
+            }
+            .ad-bt-login {
+                position:relative;
+                top:-65px;
+                left:17%;
+                background-color: #0056b9;
+                width:184px;
+                height:48px;
+                font-size: 14px;
+                color: #ffffff;
+                border:0;
+                z-index:2;
+            }
+            .ad-login-caa {
+                position: relative;
+                width: 280px;
+                height:223px;
+                z-index:0;
+            }
+            .ad-login-pp {
+                position: relative;
+                width: 280px;
+                height:223px;
+                z-index:0;
+            }
+            .ad-login-conn {
+                position: relative;
+                width: 280px;
+                height:223px;
+                z-index:0;
+            }
+            .ad-login-img {
+                position: relative;
+                width: 280px;
+                height:223px;
+                z-index:1;
+                opacity: 0.8;
+                filter: alpha(opacity=80); /* For IE8 and earlier */
+            }
+            .ad-title-box {
+                width:auto;
+                height:230px;
+                /* border:1px dotted #ff8a80; */
+            }
+            .ad-title {
+                position: relative;
+                width:100%;
+                font-size:2.4em;
+                font-weight: 500;
+                color: #555;
+                padding:0px;
+                text-align:center;
+            }
+            .ad-subtitle {
+                position:relative;
+                width:auto;
+                font-size:18px;
+                font-weight: 400;
+                color: #555;
+                padding-left:30px;
+                top:10px;
+                text-align:center;
+            }
+            .ad-filter-title {
+                font-size: 16px;
+            }
+            .ad-filters-box {
+                padding-top:10px;
+                padding-bottom:10px;
+            }
+            .ad-products {
+                width:100%;
+                margin-top:10px;
+                border:0;
+                padding:0;
+            }
+            .ad-personal-title {
+                font-size: 1.2em;
+            }
+            .ad-personal {
+                width:100%;
+                border:0;
+                margin:0;
+            }
+            .ad-commercial {
+                width:100%;
+                border:0;
+                margin:0;
+            }
+
+            .ad-tile{
+            	margin:0px 22px 20px 0px;
+            	display: inline-block;
+            	border:1px solid #cccccc;
+            	width:98.9%;
+            	height:285px;
+            	border-radius: 0px;
+            	padding:0;
+            	background:#fff;
+            	/* box-shadow: 0 5px 2px rgba(0,123,180,0.15); */
+                box-shadow: 0 0 24px rgba(0,0,0,0.2);
+                transition: all 0.4s ease-in-out;
+            }
+            .ad-tile:hover{
+                width:100%;
+                margin-left:-5px;
+                cursor:pointer;
+            }
+            .ad-tileimg-a {
+                position:absolute;
+                width:256px;
+                height:auto;
+                cursor:pointer;
+                vertical-align:top;
+                z-index:1;
+                object-fit: cover;
+                top:0;left:0;
+            }
+            .ad-tileimg-a:hover {
+                position:absolute;
+                width:256px;
+                height:auto;
+                opacity: 0.5;
+                cursor:pointer;
+                vertical-align:top;
+                z-index:1;
+                object-fit: cover;
+                top:0;left:0;
+            }
+            .ad-tile-txt {
+                position:relative;
+                color:#666;
+                margin-top:160px;
+                width:98.5%;
+                height:auto;
+                padding:5px 3px 0px 3px;
+                text-align: center;
+                vertical-align:top;
+                z-index:99;
+                font-size:16px;
+                font-family: 'gothamlight',
+                Arial,sans-serif;
+            }
+            .ad-tile-txt:hover {
+                position:relative;
+                color:#004EB4;
+                margin-top:160px;
+                width:98.5%;
+                height:auto;
+                padding:5px 3px 0px 3px;
+                text-align: center;
+                z-index:99;
+                cursor:pointer;
+                font-size:16px;
+                font-family: 'gothamlight', Arial,sans-serif;
+            }
+            .col-sm-2 {
+                width:100%;
+                border:0;
+            }
+            .col-md-3 {
+                width: 100%;
+                margin-bottom:10px;
+                /* border:1px solid #4db6ac; */
+            }
+            .fa-arrow-right {
+                font-weight:normal;
+                padding: 0px 0px 0px 0px;
+                border:0px;
+                -webkit-transform: rotate(88deg);
+                -moz-transform: rotate(88deg);
+                -ms-transform: rotate(88deg);
+                -o-transform: rotate(88deg);
+                transform: rotate(88deg);
+            }
+
+        }
+
+
+        /* Smartphones (landscape) ----------- */
+        @media only screen
+        and (min-width : 321px) {
+        /* Styles */
+        }
+
+        /* Smartphones (portrait) ----------- */
+        @media only screen
+        and (max-width : 320px) {
+        /* Styles */
+        }
+
+        /* iPads (portrait and landscape) ----------- */
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px) {
+        /* Styles */
+        }
+
+        /* iPads (landscape) ----------- */
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) {
+        /* Styles */
+        }
+
+        /* iPads (portrait) ----------- */
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) {
+        /* Styles */
+        }
+
+        /* Desktops and laptops ----------- */
+        @media only screen
+        and (min-width : 1224px) {
+        /* Styles */
+        }
+
+        /* Large screens ----------- */
+        @media only screen
+        and (min-width : 1824px) {
+        /* Styles */
+        }
+
+        /* iPhone 4 ----------- */
+        @media
+        only screen and (-webkit-min-device-pixel-ratio : 1.5),
+        only screen and (min-device-pixel-ratio : 1.5) {
+        /* Styles */
+        }
+    </style>
+  </head>
+  <body onload="loadStates(); loadProducts(); loadCatergories(); loadPtiles(); loadCtiles();defaultCookie();">
+    <!-- Start Main AD container -->
+    <div class="container-fluid">
+        <!-- Start AD navigation -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="navbar-ad">
+                    <li><a href="#" title="1-866-370-6505" target="_blank"><i class="fa fa-phone-square" aria-hidden="true"></i> 1-866-370-6505</a></li>
+                    <li><a href="#" title="Take a Tour"  target="_blank"><i class="fa fa-info-circle" aria-hidden="true"></i> Take a Tour</a></li>
+                    <li><a href="http://orchidinsurance.com/agency-dashboard-instructions-2/" title="Watch the Video"  target="_blank"><i class="fa fa-play-circle" aria-hidden="true"></i> Watch the Video</a></li>
+                    <li><a href="http://orchidinsurance.com/wp-content/themes/orchid-new/assets/pdf/AgencyDashboardGuiderev2.pdf" title="User's Guide"  target="_blank"><i class="fa fa-file-text" aria-hidden="true"></i> User's Guide</a></li>
+                </div>
+            </div>
+        </div>
+        <!--// END AD navigation -->
+        <!-- Start AD title and Existing Policies Logins -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class=" row div-existing">
+                    <div class="col-md-3 ad-title-box">
+                        <div class="ad-title">Agency Dashboard</div>
+                        <span class="ad-subtitle">Click Here for Existing<br/></span>
+                        <span class="ad-subtitle">Policies & Quotes <i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></span>
+
+                    </div>
+                    <div class="col-md-3 ad-login-box">
+                        <div class="ad-login-pp">
+                            <img src="http://castor.orchidinsurance.com/wp-content/themes/orchid-new/assets/img/policyplus-login.png" class="ad-login-img" title="Orchid Policy Plus" />
+                            <button type="button" id="polplus-login" name="" class="ad-bt-login" data-toggle="modal"  data-target="#polplus" title="Orchid Policy Plus">Orchid Policy Plus</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ad-login-box">
+                        <div class="ad-login-caa">
+                            <img src="http://castor.orchidinsurance.com/wp-content/themes/orchid-new/assets/img/caa-login.png" class="ad-login-img" title="Coastal Agents Alliance" />
+                            <button type="button" id="coastal-login" name="" class="ad-bt-login" data-toggle="modal" data-target="#coastal"  title="Coastal Agents Alliance">Coastal Agents Alliance</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ad-login-box">
+                        <div class="ad-login-conn">
+                            <img src="http://castor.orchidinsurance.com/wp-content/themes/orchid-new/assets/img/connect-login.png" class="ad-login-img" title="Orchid Connect" />
+                            <button type="button" id="connect-login" name="" class="ad-bt-login" data-toggle="modal" data-target="#connect" title="Orchid Connect" onclick="window.open('http://connect.orchidinsurance.com', '_blank');">Orchid Connect</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// END AD title and Existing Policies Logins -->
+        <!-- Start New Policies & State selection -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row div-newbiz">
+                    <div class="col-md-3">
+                        <div class="ad-newquote">
+                            Start a New Business Quote <i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <form id="ad-newbiz" name="ad-newbiz">
+                    <div id="statelist" class="col-md-3">
+                        <select id="fstate" name="fstate" class="ad-property" onchange="getCaribb();">
+
+                        </select>
+                    </div>
+                    <div class="col-md-3 ad-df-location">
+                        <label for="locdefault">Make this my default location: </label>
+                        <input type="checkbox" value="1" id="locdefault" onclick="setCookies('OrchidDash',fstate,'365');" name="locdefault" class="locdefault" />
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--// END New Policies & State selection -->
+        <!-- Start Filter and Product Lines -->
+        <div class="row ad-row-padding">
+            <div class="col-lg-12">
+                <!-- AD Filters -->
+                <div class="col-sm-2 ad-filters-box">
+                    <form id="ad-filters">
+                        <p class="ad-filter-title">Products</p>
+                        <div id="products" class="form-group ad-filters">
+
+                        </div>
+                        <p class="ad-filter-title">Categories</p>
+                        <div id="categories" class="form-group ad-filters">
+
+                        </div>
+                        <!-- <p class="ad-filter-title">Sort by</p>
+                        <div id="categories" class="form-group ad-filters">
+                            <li><input type="radio" id="filter-by" value="0" title="All"/> <label for="filter-by">Alphabetical</label></li>
+                            OR
+                            <li><input type="radio" id="filter-by" value="0" title="All"/> <label for="filter-by">Product Type</label></li>
+                        </div> -->
+                        <p><button type="button" title="Reset all filters" class="btn reset-bt" onclick="resetFilters();">Reset</button></p>
+                    </form>
+                </div>
+                <!-- AD Products -->
+                <div class="col-md-10 ad-products">
+                    <div class="col-md-10 ad-personal" id="personal-lines">
+                        <div id="sorttilesP" class="ad-personal-title" align="center">PERSONAL LINES
+                            <span id="sortTrigP" class="ad-tile-sort">
+                                    <i class="fa fa-sort fa-lg" aria-hidden="true" onclick="loadPtiles(2);" title="Sort Tiles"></i>
+                            </span>
+                        </div>
+
+                        <div id="rowP" class="row row-margin rowP"  align="center">
+
+                        </div>
+                    </div>
+                    <div class="col-md-10 ad-commercial">
+                        <div id="sorttilesC" class="ad-commercial-title"  align="center">COMMERCIAL LINES
+                            <span id="sortTrigC" class="ad-tile-sort">
+                                    <i class="fa fa-sort fa-lg" aria-hidden="true" onclick="loadCtiles(2);" title="Sort Tiles"></i>
+                            </span>
+                        </div>
+                        <div id="rowC" class="row row-margin rowC">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// END Filter and Product Lines -->
+    </div>
+    <script>
+        $(document).ready(function(){
+            //State Filter
+            $( "#fstate" ).change(function() {
+              var selectedEventType = this.options[this.selectedIndex].value;
+                //Personal Lines Filter
+                if (selectedEventType == "all") {
+                  $('.rowP .filterrowP').removeClass('hidden');
+                } else {
+                  $('.rowP .filterrowP').addClass('hidden');
+                  $('.rowP .filterrowP[data-state*="' + selectedEventType + '"]').removeClass('hidden');
+                }
+                //Commercial Lines Filter
+                if (selectedEventType == "all") {
+                  $('.rowC .filterrowC').removeClass('hidden');
+                } else {
+                  $('.rowC .filterrowC').addClass('hidden');
+                  $('.rowC .filterrowC[data-state*="' + selectedEventType + '"]').removeClass('hidden');
+                }
+
+            });
+
+
+        });
+
+
+        //Show all Categories
+        function setFilterAll(filterall){
+            if(filterall == 0){
+                $('.rowP .filterrowP').removeClass('hidden');
+                $('.rowC .filterrowC').removeClass('hidden');
+            }
+        }
+        //Category Filters
+        function setFilter(filtercat){
+            var filter = filtercat;
+            console.log("Filter is:"+filter);
+            //$('.rowP .filterrowP').addClass('hidden');
+            //$('.rowC .filterrowC').addClass('hidden');
+            if (filtercat == 0){
+                $('.rowP .filterrowP').removeClass('hidden');
+                $('.rowC .filterrowC').removeClass('hidden');
+            } else {
+                $('.rowP .filterrowP').addClass('hidden');
+                $('.rowP .filterrowP[data-category*="' + filtercat + '"]').removeClass('hidden');
+                    //commercial lines
+                $('.rowC .filterrowC').addClass('hidden');
+                $('.rowC .filterrowC[data-category*="' + filtercat + '"]').removeClass('hidden');
+            }
+
+        }
+
+        //Reset all filters
+        function resetFilters(){
+            //reset tiles
+            $('.rowP .filterrowP').removeClass('hidden');
+            $('.rowC .filterrowC').removeClass('hidden');
+            //reset column width
+            $('.col-md-10 .ad-personal').removeClass('hidden');
+                $('.ad-personal').removeClass('expand');
+            $('.col-md-10 .ad-commercial').removeClass('hidden');
+                $('.ad-commercial').removeClass('expand');
+            //reset inputs to defaults
+            $('#fstate').prop('selectedIndex',0);
+            $("input[name=filtercat_1]").prop("checked",false);
+            $("input[name=filtercat_2]").prop("checked",false);
+            $("input[name=filtercat_3]").prop("checked",false);
+            $("input[name=filtercat_4]").prop("checked",false);
+            $("input[name=filtercat_5]").prop("checked",false);
+            $("input[name=filtercat_6]").prop("checked",false);
+            $("input[name=filtercat_7]").prop("checked",false);
+            $("input[name=filtercat_8]").prop("checked",false);
+            $("input[name=filterby][value='0']").prop("checked",true);
+            $("#filtercat_0").prop("checked",true);
+        }
+        //Check to see if localstorage is supported
+        function storageAvailable(type) {
+            try {
+                var storage = window[type],
+                    x = '__storage_test__';
+                storage.setItem(x, x);
+                storage.removeItem(x);
+                return true;
+            }
+            catch(e) {
+                return e instanceof DOMException && (
+                    // everything except Firefox
+                    e.code === 22 ||
+                    // Firefox
+                    e.code === 1014 ||
+                    // test name field too, because code might not be present
+                    // everything except Firefox
+                    e.name === 'QuotaExceededError' ||
+                    // Firefox
+                    e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+                    // acknowledge QuotaExceededError only if there's something already stored
+                    storage.length !== 0;
+            }
+        }
+        function setCookies(){
+          var cname = "OrchidDash";
+          var cvalue = $("#fstate").val();
+          var exdays = 365;
+          document.cookie = cname + "=" + cvalue + ";" + exdays + ";path=/";
+          console.log(document.cookie);
+
+        }
+
+        //Set cookie to "all"
+        function defaultCookie(){
+            var linestate = "Alabama, Alaska, Arizona, California, Colorado, Connecticut, Delaware, District of Columbia, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nevada, New Hampshire, New Jersey, New York, North Carolina, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, Tennessee, Texas,Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming";
+            var states = linestate.split(',');
+            //var fstate = $("fstate").val();
+            if (document.cookie.indexOf('OrchidDash') > -1 ){
+                if ($.cookie('OrchidDash') == states.indexOf(fstate) > -1 || $.cookie('OrchidDash') != "all"){
+                    // $('#locdefault').click(function() {
+                    //      var fstate = $("#fstate").val();
+                    //     $.cookie("OrchidDash", fstate);
+                    // });
+                    $("#fstate").val($.cookie('OrchidDash'));
+                    var selectedEventType = $.cookie('OrchidDash');
+                    //Apply filter for chosen location
+                        //personal lines
+                    $('.rowP .filterrowP').addClass('hidden');
+                    $('.rowP .filterrowP[data-state*="' + selectedEventType + '"]').removeClass('hidden');
+                        //commercial lines
+                    $('.rowC .filterrowC').addClass('hidden');
+                    $('.rowC .filterrowC[data-state*="' + selectedEventType + '"]').removeClass('hidden');
+                }
+            } else {
+                var cname = "OrchidDash";
+                var cvalue = "all";
+                var exdays = 365;
+                document.cookie = cname + "=" + cvalue + ";" + exdays + ";path=/";
+                $("#fstate").val($.cookie('OrchidDash'));
+            }
+            console.log(document.cookie);
+
+        }
+        //Get the cookie
+        function getCookie(cname) {
+            var name = cname + "=";
+            var cvalue = fstate;
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function getCaribb() {
+
+        }
+        //For Feedback tab
+        // $(function() {
+        // 	$("#feedback-tab").click(function() {
+        // 		$("#feedback-form").toggle("slide");
+        // 	});
+        //
+        // 	$("#feedback-form form").on('submit', function(event) {
+        // 		var $form = $(this);
+        // 		$.ajax({
+        // 			type: $form.attr('method'),
+        // 			url: $form.attr('action'),
+        // 			data: $form.serialize(),
+        // 			success: function() {
+        // 				$("#feedback-form").toggle("slide").find("textarea").val('');
+        // 			}
+        // 		});
+        // 		event.preventDefault();
+        // 	});
+        // });
+    </script>
+    <!-- Start Modals -->
+    <!-- PolicyPlus Modal -->
+    <div class="modal fade" id="polplus" role="dialog">
+      <!-- Start modal -->
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <!-- Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <div id="loginImgA" align="center">
+                <img src='http://orchidinsurance.com/wp-content/themes/orchid-new/assets/img/o-velocity.png' style='padding:3px;' /><br><br><h5 class='modal-title' style='text-align:center;'>Please log in with your Policyplus credentials</h5>
+              </div>
+          </div>
+          <!-- Body -->
+          <div class="modal-body">
+            <p>If you are not an Orchid Agent and need access to our online quoting system, please contact Agency Services at 772-237-8545.</p>
+            <form id='modalformA' name='loginFormA' Method="POST">
+                <div class="form-group" id="usrA">
+                    <label for="usernameA">Username:</label>
+                    <input type="text" class="form-control" id="usernameA" name="usernameA" required placeholder="Enter your username"/>
+                    <label for="passwordA">Password:</label>
+                    <input type="password" class="form-control" id="passwordA" name="passwordA" required placeholder="Enter your password"/>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox"> Remember me</label>
+                </div>
+                <button type="button" onclick="submitPolplus();" class="btn btn-primary">Log In</button>
+                <span id="ForgotPA" style="font-size:0.8em;">
+                    [<a href='http://polplus2.orchidinsurance.com/policyplus/RetrievePassword'  target='_blank'>Forgot Password</a>]
+                </span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coastal Modal -->
+    <div class="modal fade" id="coastal" role="dialog">
+      <!-- Start modal -->
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <!-- Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <div id="loginImgB" align="center">
+                <img src='http://orchidinsurance.com/wp-content/themes/orchid-new/assets/img/caa.png' style='padding:3px;'/><br/><br><h5 class='modal-title' style='text-align:center;'>Please log in with your Coastal Agents Alliance credentials</h5>
+              </div>
+          </div>
+          <!-- Body -->
+          <div class="modal-body">
+            <p>If you are not an Orchid Agent and need access to our online quoting system, please contact Agency Services at 772-237-8545.</p>
+            <form id='modalformB' name='loginFormB' Method="POST">
+                <div class="form-group" id="usrA">
+                    <label for="usernameA">Username:</label>
+                    <input type="text" class="form-control" id="usernameB" name="usernameB" required placeholder="Enter your username"/>
+                    <label for="passwordA">Password:</label>
+                    <input type="password" class="form-control" id="passwordB" name="passwordB" required placeholder="Enter your password"/>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox"> Remember me</label>
+                </div>
+                <button type="button" onclick="submitCoastal();" class="btn btn-primary">Log In</button>
+                <span id="ForgotPB" style="font-size:0.8em;">
+                    <br/>For help with your <span style='font-weight:bold;'>password</span>, please call 609-277-7809 extension 405 or email us at <a href='mailto:ssati@orchidinsurance.com'>ssati@orchidinsurance.com</a>.
+                </span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--// END Modals -->
+    <!-- <script src="assets/js/getmodals_a.js"></script> -->
+    <!-- <script src="assets/js/getfilters.js"></script> -->
+    <!--// END Main AD container -->
+  </body>
+</html>

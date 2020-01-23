@@ -1,0 +1,399 @@
+{
+  "Product": "Dashboard Tiles",
+  "version": 0.1,
+  "releaseDate": "2017-10-20T00:00:00.000Z",
+  "demo": false,
+  "tile": [
+    {
+      "name": "Excess & Surplus Homeowners",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Admitted Homeowners",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Admitted High Net Worth",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "HO6 Condo Unit",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "HO4 Renters",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Builder's Risk",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Primary & Excess Flood",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Inland Marine & Valuable Articles",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Wind Only Policy",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Excess Wind Only Policy",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Yachts & Watercraft",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "NFIP Flood @ 22% Commission",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "MA Auto (Stand Alone)",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "USLI Umbrella",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "USLI 1-4 Dwelling",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "USLI Comprehensive Personal Liability",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    },
+    {
+      "name": "Caribbean",
+      "detail": "",
+      "image": "",
+      "provider": [
+        {
+          "system": 1,
+          "pname": "Coastal Agents Alliance"
+        },
+        {
+          "system": 2,
+          "pname": "Connect"
+        },
+        {
+          "system": 3,
+          "pname": "Policy Plus"
+        },
+        {
+          "system": 4,
+          "pname": "High Net Worth"
+        }
+      ]
+    }
+  ]
+}

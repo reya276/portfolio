@@ -1,0 +1,1186 @@
+//fonts
+//Roboto: Slab Bold
+@font-face {
+    font-family: 'roboto_slabbold';
+    src: url("./../fonts/roboto_slab/robotoslab-bold-webfont.woff2") format('woff2'), url("./../fonts/roboto_slab/robotoslab-bold-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+//Roboto: Slab Regular
+@font-face {
+    font-family: 'roboto_slabregular';
+    src: url("./../fonts/roboto_slab/robotoslab-regular-webfont.woff2") format('woff2'), url("./../fonts/roboto_slab/robotoslab-regular-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+//Roboto: Slab Light
+@font-face {
+    font-family: 'roboto_slablight';
+    src: url("./../fonts/roboto_slab/robotoslab-light-webfont.woff2") format('woff2'), url("./../fonts/roboto_slab/robotoslab-light-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+//Roboto: bold
+@font-face {
+    font-family: 'robotobold';
+    src: url("./../fonts/roboto-bold-webfont.woff2") format('woff2'), url("./../fonts/roboto-bold-webfont.woff") format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+//Roboto: Medium
+@font-face {
+    font-family: 'robotomedium';
+    src: url("./../fonts/roboto-medium-webfont.woff2") format('woff2'), url("./../fonts/roboto-medium-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+//Roboto: regular
+@font-face {
+    font-family: 'robotoregular';
+    src: url("./../fonts/roboto-regular-webfont.woff2") format('woff2'), url("./../fonts/roboto-regular-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+// color variables
+$colors: (
+    blue: #38bcdb,
+    bluehover: #2e91a3,
+    lightblue: #88d7e8,
+    grey: #a9aaab,
+    lightgrey: #dcdcdc,
+    white: #ffffff,
+    black: #000000
+); //BG img variables
+$bgimg: (
+    //Mobile
+    bg1: url("./../img/mobile/code_mobile_hero.jpg"),
+    bg2: url("./../img/mobile/featuring_mobile.jpg"),
+    bg3: url("./../img/mobile/about_mobile.jpg"),
+    bg4: url("./../img/mobile/fap_mobile.jpg"),
+    bg5: url("./../img/mobile/data_mobile_hero.jpg"),
+    //Desktop
+    bg6: url("./../img/code_hero.jpg"),
+    bg7: url("./../img/featuring.jpg"),
+    bg8: url("./../img/about.jpg"),
+    bg9: url("./../img/faq.jpg"),
+    bg10: url("./../img/data_hero.jpg"),
+    norepeat: no-repeat,
+    repeat: repeat,
+    repeatx: repeat-x,
+    repeaty: repeat-y,
+    bgcontain: contain,
+    bgcover: cover,
+    bgclip: content-box,
+    bgorigin: content-box
+);
+$list: (
+    li1: url("./../img/icons/circle_arrow_a.svg"),
+    li2: url("./../img/icons/circle_arrow_b.svg"),
+    liw: 20px,
+    lih: 20px,
+    lipad: -5px 10px,
+    position: 100% 30px,
+    arrowright: url("./../img/icons/arrow-right.png"),
+    arrowdown: url("./../img/icons/arrow-down.png"),
+    arrowleft: url("./../img/icons/arrow-left.png")
+); // Body elements
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "robotoregular", Helvetica, sans-serif;
+    font: 75%/150%;
+
+    a {
+        color: map-get($colors, black);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    section {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.container {
+    padding: 0 90px;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    #topmain {
+        #headerbar {
+            .headerbartxt {
+                float: right;
+                text-align: right;
+                color: #fff;
+                font-family: "roboto_slabregular", Helvetica, sans-serif;
+                font-size: 16px;
+
+                .numbold {
+                    font-family: "roboto_slabbold", Helvetica, sans-serif;
+                    color: map-get($colors, blue);
+                }
+                height: auto;
+            }
+
+            .logo {
+                //position:relative;
+                //background: url('./../img/logos/logo_trilogy.svg'); repeat: no-repeat !important;
+                float: left;
+                width: auto;
+                height: 75px;
+                text-align: left;
+                padding-top: 10px;
+                vertical-align: middle;
+            }
+            padding: 0 90px;
+        }
+        float: left;
+        width: 100%;
+        height: 100px;
+        height: auto;
+        background-color: rgba(0,0,0,0.90);
+        padding: 15px;
+        text-align: left;
+    }
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+}
+
+.codehero {
+    float: left;
+    background-image: map-get($bgimg, bg6);
+    background-repeat: map-get($bgimg, norepeat);
+    background-size: map-get($bgimg, bgcover);
+    background-position: bottom;
+    padding: 110px 90px;
+    width: 100%;
+    height: 550px;
+    color: map-get($colors, white);
+}
+
+#learnblock {
+    float: left;
+    width: 380px;
+    height: 386px;
+}
+
+.learntxt {
+    float: left;
+    font-family: 'robotobold', Helvetica, sans-serif;
+    font-size: 48px;
+    color: map-get($colors, white);
+    text-align: left;
+    padding-top: 10px;
+    line-height: 1.0;
+}
+
+.learnsmtxt {
+    float: left;
+    float: left;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    font-size: 24px;
+    color: map-get($colors, white);
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.learnsmtxtb {
+    float: right;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    font-size: 20px;
+    color: map-get($colors, white);
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 4px solid map-get($colors, white);
+}
+
+#codeblock {
+    float: right;
+    width: 426px;
+    height: 386px;
+}
+
+.coding {
+    float: right;
+    float: right;
+}
+
+.codetitle {
+    font-family: "robotobold", Helvetica, sans-serif;
+    text-align: right;
+    font-size: 32px;
+    color: map-get($colors, blue);
+}
+
+.codetxt {
+    font-family: 'robotoregular', sans-serif;
+    font-size: 20px;
+    text-align: right;
+    border-bottom: 4px solid map-get($colors, blue);
+}
+
+.analytics {
+    float: right;
+    text-align: right;
+    width: 100%;
+    height: auto;
+    color: map-get($colors, white);
+    margin-top: 50px;
+}
+
+.analyticstitle {
+    font-family: "robotobold", Helvetica, sans-serif;
+    font-size: 32px;
+    text-align: right;
+    color: map-get($colors, white);
+}
+
+.analyticstxt {
+    font-family: 'robotoregular', sans-serif;
+    font-size: 20px;
+    text-align: right;
+    border-bottom: 4px solid #FFFFFF;
+}
+//Program Info Section
+
+#programinfo {
+    .info {
+        font-family: 'robotobold', Helvetica, sans-serif;
+        font-size: 28px;
+        color: map-get($colors, black);
+        text-align: center;
+    }
+
+    .steps {
+        font-family: 'robotoregular', sans-serif;
+        font-size: 16px;
+        color: map-get($colors, black);
+        text-align: center;
+    }
+    //form fields
+    #infofrm {
+        .fields {
+            display: inline;
+            padding: 0;
+            font-family: 'robotoregular', sans-serif;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        input {
+            width: 46.5%;
+            border-bottom: 2px solid map-get($colors, black);
+            padding: 0;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            background-color: map-get($colors, lightgrey);
+            text-align: center;
+        }
+
+        #fname {
+            margin-right: 5px;
+        }
+
+        #lname {
+            margin-left: 5px;
+        }
+
+        #continuebt {
+            .button {
+                width: 98%;
+                height: auto;
+                font-family: 'robotobold', Helvetica, sans-serif;
+                font-size: 32px;
+                background-color: map-get($colors, blue);
+                color: map-get($colors, white);
+                padding: 0;
+                border-radius: 4px;
+                radius: 4px;
+                border: 0;
+                cursor: pointer;
+            }
+
+            .button:hover {
+                width: 98%;
+                height: auto;
+                font-family: 'robotobold', Helvetica, sans-serif;
+                font-size: 32px;
+                background-color: map-get($colors, bluehover);
+                color: map-get($colors, white);
+                padding: 0;
+                border-radius: 4px;
+                radius: 4px;
+                border: 0;
+                cursor: pointer;
+            }
+
+            .circle {
+                width: 24px;
+                height: 24px;
+                margin: -3px 0 0 -3px;
+                color: map-get($colors, white);
+            }
+            text-align: center;
+            padding-top: 8px;
+        }
+        text-align: center;
+        padding: 8px;
+    }
+    width: 100%;
+    height: 184px;
+    float: left;
+    background-color: map-get($colors, lightgrey);
+    padding: 8px;
+    border-radius: 4px;
+    radius: 4px;
+    opacity: 0.9;
+}
+//Featuring Section
+
+#featuring {
+    .featuretitle {
+        font-family: 'robotomedium', Helvetica, sans-serif;
+        font-size: 40px;
+        color: map-get($colors, white);
+        padding-top: 20px;
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    .mdevice {
+        width: auto;
+        height: 500px;
+    }
+
+    .learnapps {
+        text-align: center;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        color: map-get($colors, white);
+    }
+
+    .datacoding {
+        width: 94px;
+        height: 94px;
+        margin: 5px 0;
+    }
+
+    .careers {
+        float: left;
+        text-align: center;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        color: map-get($colors, white);
+    }
+
+    .benefits {
+        width: 88px;
+        height: 88px;
+        margin: 5px 0 10px;
+    }
+
+    .study {
+        text-align: center;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        color: map-get($colors, white);
+    }
+
+    .schedule {
+        width: 88px;
+        height: 88px;
+        margin: 5px 0 10px;
+    }
+
+    .projects {
+        text-align: center;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        color: map-get($colors, white);
+    }
+
+    .datasets {
+        width: 88px;
+        height: 88px;
+        margin: 5px 0;
+    }
+
+    .smtxt {
+        font-size: 0.8em;
+        text-align: center;
+        color: map-get($colors, white);
+        padding-top: 20px;
+    }
+    width: 100%;
+    background-image: map-get($bgimg, bg7);
+    background-repeat: map-get($bgimg, norepeat);
+    background-size: map-get($bgimg, bgcover);
+    background-color: map-get($colors, lightgrey);
+    text-align: center;
+    padding: 30px 90px;
+}
+//Our Story Section
+
+#ourstory {
+    .story {
+        font-family: 'robotomedium', Helvetica, sans-serif;
+        font-size: 40px;
+        color: map-get($colors, blue);
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    .dev {
+        padding: 20px 0;
+        text-align: center;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        font-size: 23px;
+        color: map-get($colors, white);
+    }
+    width: 100%;
+    height: 375px;
+    background-image: map-get($bgimg, bg8);
+    background-repeat: map-get($bgimg, norepeat);
+    background-size: map-get($bgimg, bgcover);
+    text-align: center;
+    padding: 60px 90px;
+}
+//FAQ Section
+
+#faqsect {
+    .faqtitle {
+        width: 60%;
+        font-family: 'robotomedium', Helvetica, sans-serif;
+        font-size: 38px;
+        color: map-get($colors, black);
+        text-decoration: underline;
+        text-align: left;
+        padding: 20px 0;
+    }
+
+    #questions {
+        .faqlist {
+            width: auto;
+            height: auto;
+            font-family: 'roboto_slablight', Helvetica, sans-serif;
+            font-size: 18px;
+            color: map-get($colors, black);
+        }
+
+        ul li.limg {
+            list-style: none;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        a,
+        ul li.limg {
+            padding: map-get($list, lipad);
+            color: map-get($colors, black);
+            text-decoration: none;
+        }
+
+        ul li.limg > a:before {
+            content: map-get($list, arrowright);
+            background-color: map-get($colors, blue);
+            padding-top: 2px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 20px;
+            text-align: center;
+            position: absolute;
+            top: 6px;
+            left: -30px;
+        }
+
+        ul li.limgtg {
+            list-style: none;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        ul li.limgtg > a:before {
+            content: map-get($list, arrowright);
+            background-color: map-get($colors, blue);
+            padding-top: 2px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 20px;
+            text-align: center;
+            position: absolute;
+            top: 6px;
+            left: -30px;
+        }
+
+        ul li.limgtg > a:before {
+            content: map-get($list, arrowdown);
+            padding: map-get($list, lipad);
+            background-color: map-get($colors, black);
+            margin-top: -3px;
+        }
+
+        li.linindent {
+            position: relative;
+            top: -20px;
+            left: 30px;
+            list-style-type: disc;
+            padding: 3px 0;
+            font-size: 14px;
+            width: auto;
+            height: auto;
+            padding-right: 15px;
+        }
+
+        .faqtxt {
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            font-size: 14px;
+            color: map-get($colors, black);
+        }
+        float: left;
+        width: 60%;
+        height: auto;
+    }
+    width: 100%;
+    height: 580px;
+    padding: 0 90px;
+    background-color: map-get($colors, lightgrey);
+    background-image: map-get($bgimg, bg9);
+    background-repeat: map-get($bgimg, norepeat);
+    background-size: map-get($bgimg, bgcover);
+    background-position-y: 0;
+    background-position-x: 65%;
+}
+//Footer Section
+
+#footer {
+    .footerlogo {
+        float: left;
+        width: 300px;
+        height: 98px;
+        text-align: left;
+    }
+
+    .footertxt {
+        float: right;
+        width: auto;
+        height: auto;
+        text-align: right;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        font-size: 14px;
+        color: map-get($colors, black);
+    }
+
+    a {
+        padding-bottom: 40px;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        font-size: 14px;
+        color: map-get($colors, black);
+    }
+    width: 100%;
+    height: 200px;
+    padding: 40px 90px;
+    background-color: map-get($colors, lightblue);
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .row {
+        padding: 0;
+        margin: 0;
+    }
+
+    .col {
+        padding: 0;
+    }
+    //header
+    #toptxt {
+        .headerbartxt {
+            color: map-get($colors, white);
+            font-size: 0.8em;
+            font-family: "robotoregular" Helvetica,sans-serif;
+
+            .numbold {
+                color: map-get($colors, blue);
+            }
+            padding: 0;
+        }
+        height: auto;
+        text-align: center;
+        padding: 10px;
+        background-color: map-get($colors, black);
+        border: 0;
+    }
+
+    #topmain {
+        .logodiv {
+            .logo {
+                width: 200px;
+                height: 75px;
+            }
+            padding: 10px 0;
+            text-align: center;
+        }
+        padding: 0 60px;
+        height: auto;
+        background-color: map-get($colors, black);
+    }
+    //Code Hero
+    #carousel {
+        .codingabg {
+            height: 280px;
+            background-image: map-get($bgimg, bg1);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codingbbg {
+            height: 280px;
+            background-image: map-get($bgimg, bg5);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codinga,
+        .codingb {
+            //Text
+            .learntxta {
+                font-family: 'robotobold', Helvetica, sans-serif;
+                font-size: 1.5em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .learnsmtxtc {
+                position: relative;
+                width: auto;
+                font-family: 'roboto_slabregular', Helvetica, sans-serif;
+                font-size: 1em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .codinga-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, blue);
+            }
+
+            .codingb-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, white);
+            }
+
+            .codetxta {
+                font-family: 'robotoregular', sans-serif;
+                font-size: 0.9em;
+                text-align: center;
+                padding: 0 5px 10px;
+            }
+            padding: 60px 50px;
+            color: map-get($colors, white);
+        }
+        padding: 0;
+    }
+    //Program info
+    #programinfo {
+        .info {
+            font-family: 'robotobold', Helvetica, sans-serif;
+            font-size: 28px;
+            color: map-get($colors, black);
+            text-align: center;
+        }
+
+        .steps {
+            font-family: 'robotoregular', sans-serif;
+            font-size: 16px;
+            color: map-get($colors, black);
+            text-align: center;
+        }
+        //form fields
+        #infofrm {
+            .fields {
+                display: inline;
+                padding: 5px;
+                font-family: 'robotoregular', sans-serif;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            input {
+                width: 42%;
+                border-bottom: 2px solid map-get($colors, black);
+                background-color: map-get($colors, white);
+                padding: 5px;
+                border-top: 0;
+                border-left: 0;
+                border-right: 0;
+                text-align: center;
+            }
+
+            #fname {
+                margin-right: 5px;
+            }
+
+            #lname {
+                margin-left: 5px;
+            }
+
+            #continuebt {
+                .button {
+                    width: 98%;
+                    height: 52px;
+                    font-family: 'robotobold', Helvetica, sans-serif;
+                    font-size: 24px;
+                    background-color: map-get($colors, blue);
+                    color: map-get($colors, white);
+                    padding: 0;
+                    border: 0;
+                    cursor: pointer;
+                }
+
+                .button:hover {
+                    width: 98%;
+                    height: 52px;
+                    font-family: 'robotobold', Helvetica, sans-serif;
+                    font-size: 24px;
+                    background-color: map-get($colors, bluehover);
+                    color: map-get($colors, white);
+                    padding: 0;
+                    border: 0;
+                    cursor: pointer;
+                }
+
+                .circle {
+                    width: 24px;
+                    height: 24px;
+                    margin: -3px 0 0 -3px;
+                    color: map-get($colors, white);
+                }
+                text-align: center;
+                padding: 20px;
+            }
+            text-align: center;
+            padding: 0;
+        }
+        height: auto;
+        background-color: map-get($colors, white);
+        padding: 10px 20px;
+        text-align: center;
+        opacity: 1;
+    }
+    //Features
+    #featuring {
+        .featuretitle {
+            font-family: 'robotomedium', Helvetica, sans-serif;
+            font-size: 40px;
+            color: map-get($colors, white);
+            text-decoration: underline;
+            text-align: center;
+        }
+
+        .mdevice {
+            width: auto;
+            height: 349px;
+        }
+
+        .learnapps {
+            text-align: center;
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            color: map-get($colors, white);
+        }
+
+        .datacoding {
+            width: 88px;
+            height: 88px;
+            margin: 5px 0;
+        }
+
+        .careers {
+            text-align: center;
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            color: map-get($colors, white);
+        }
+
+        .benefits {
+            width: 88px;
+            height: 88px;
+            margin: 5px 0 10px;
+        }
+
+        .study {
+            text-align: center;
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            color: map-get($colors, white);
+        }
+
+        .schedule {
+            width: 88px;
+            height: 88px;
+            margin: 5px 0;
+        }
+
+        .projects {
+            text-align: center;
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            color: map-get($colors, white);
+        }
+
+        .datasets {
+            width: 88px;
+            height: 88px;
+            margin: 5px 0;
+        }
+        background-image: map-get($bgimg, bg2);
+        background-repeat: map-get($bgimg, repeaty);
+        background-size: map-get($bgimg, bgcover);
+        background-color: map-get($colors, lightgrey);
+        text-align: center;
+
+        .smtxt {
+            font-size: 0.8em;
+        }
+        padding: 10px 60px;
+    }
+    //Our Story Section
+    #ourstory {
+        .story {
+            font-family: 'robotomedium', Helvetica, sans-serif;
+            font-size: 40px;
+            color: map-get($colors, blue);
+            text-decoration: underline;
+            text-align: center;
+        }
+
+        .dev {
+            padding: 45px 0;
+            text-align: center;
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            font-size: 23px;
+            color: map-get($colors, white);
+        }
+        background-image: map-get($bgimg, bg3);
+        background-repeat: map-get($bgimg, norepeat);
+        background-size: map-get($bgimg, bgcover);
+        text-align: center;
+        padding: 110px 60px;
+        height: 100%;
+    }
+    //FAQ Section
+    #faqsect {
+        .faqtitle {
+            font-family: 'robotomedium', Helvetica, sans-serif;
+            font-size: 40px;
+            color: map-get($colors, black);
+            text-decoration: underline;
+            text-align: center;
+            padding-bottom: 15px;
+            width: 100%;
+        }
+
+        .faqlist {
+            width: auto;
+            height: auto;
+            font-family: 'roboto_slablight', Helvetica, sans-serif;
+            font-size: 18px;
+            color: map-get($colors, black);
+            padding-bottom: 180px;
+        }
+
+        ul li.limg {
+            list-style: none;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        a,
+        ul li.limg {
+            padding: map-get($list, lipad);
+            color: map-get($colors, black);
+            text-decoration: none;
+        }
+
+        ul li.limg > a:before {
+            content: map-get($list, arrowright);
+            background-color: map-get($colors, blue);
+            padding-top: 2px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 20px;
+            text-align: center;
+            position: absolute;
+            top: 6px;
+            left: -30px;
+        }
+
+        ul li.limgtg {
+            list-style: none;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        ul li.limgtg > a:before {
+            content: map-get($list, arrowright);
+            background-color: map-get($colors, blue);
+            padding-top: 2px;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 20px;
+            text-align: center;
+            position: absolute;
+            top: 6px;
+            left: -30px;
+        }
+
+        ul li.limgtg > a:before {
+            content: map-get($list, arrowdown);
+            padding: map-get($list, lipad);
+            background-color: map-get($colors, black);
+            margin-top: -3px;
+        }
+
+        li.linindent {
+            position: relative;
+            top: -20px;
+            left: 30px;
+            list-style-type: disc;
+            padding: 3px 0;
+            font-size: 14px;
+            width: auto;
+            height: auto;
+            padding-right: 15px;
+        }
+
+        .faqtxt {
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            font-size: 14px;
+            color: map-get($colors, black);
+        }
+        height: auto;
+        background-color: map-get($colors, lightgrey);
+        background-image: map-get($bgimg, bg4);
+        background-repeat: map-get($bgimg, norepeat);
+        background-size: map-get($bgimg, bgcontain);
+        background-position: bottom;
+        padding: 10px 60px;
+    }
+    //Footer Section
+    #footer {
+        .footerlogom {
+            width: auto;
+            height: 98px;
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+
+        .footertxt {
+            width: 100%;
+            height: auto;
+            padding-top: 10px;
+            text-align: center;
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            font-size: 14px;
+            color: map-get($colors, black);
+        }
+
+        a {
+            padding-bottom: 40px;
+            font-family: 'roboto_slabregular', Helvetica, sans-serif;
+            font-size: 14px;
+            color: map-get($colors, black);
+        }
+        height: auto;
+        padding: 0 0 30px;
+        text-align: center;
+        background-color: map-get($colors, lightblue);
+    }
+}
+@media (max-device-width: 320px) {
+    //Code Hero
+    #carousel {
+        .codingabg {
+            height: 280px;
+            background-image: map-get($bgimg, bg1);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codingbbg {
+            height: 280px;
+            background-image: map-get($bgimg, bg5);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codinga,
+        .codingb {
+            //Text
+            .learntxta {
+                font-family: 'robotobold', Helvetica, sans-serif;
+                font-size: 1.5em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .learnsmtxtc {
+                position: relative;
+                width: auto;
+                font-family: 'roboto_slabregular', Helvetica, sans-serif;
+                font-size: 1em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .codinga-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, blue);
+            }
+
+            .codingb-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, white);
+            }
+
+            .codetxta {
+                font-family: 'robotoregular', sans-serif;
+                font-size: 0.9em;
+                text-align: center;
+                padding: 0 5px 10px;
+            }
+            padding: 28px 50px;
+            color: map-get($colors, white);
+        }
+        padding: 0;
+    }
+}
+@media (max-device-width: 360px) {
+    //Code Hero
+    #carousel {
+        .codingabg {
+            height: 280px;
+            background-image: map-get($bgimg, bg1);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codingbbg {
+            height: 280px;
+            background-image: map-get($bgimg, bg5);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codinga,
+        .codingb {
+            //Text
+            .learntxta {
+                font-family: 'robotobold', Helvetica, sans-serif;
+                font-size: 1.5em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .learnsmtxtc {
+                position: relative;
+                width: auto;
+                font-family: 'roboto_slabregular', Helvetica, sans-serif;
+                font-size: 1em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .codinga-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, blue);
+            }
+
+            .codingb-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, white);
+            }
+
+            .codetxta {
+                font-family: 'robotoregular', sans-serif;
+                font-size: 0.9em;
+                text-align: center;
+                padding: 0 5px 10px;
+            }
+            padding: 28px 50px;
+            color: map-get($colors, white);
+        }
+        padding: 0;
+    }
+}
+@media (max-device-width: 375px) {
+    //Code Hero
+    #carousel {
+        .codingabg {
+            height: 280px;
+            background-image: map-get($bgimg, bg1);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codingbbg {
+            height: 280px;
+            background-image: map-get($bgimg, bg5);
+            background-repeat: map-get($bgimg, norepeat);
+            background-size: map-get($bgimg, bgcover);
+        }
+
+        .codinga,
+        .codingb {
+            //Text
+            .learntxta {
+                font-family: 'robotobold', Helvetica, sans-serif;
+                font-size: 1.5em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .learnsmtxtc {
+                position: relative;
+                width: auto;
+                font-family: 'roboto_slabregular', Helvetica, sans-serif;
+                font-size: 1em;
+                color: map-get($colors, white);
+                text-align: center;
+            }
+
+            .codinga-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, blue);
+            }
+
+            .codingb-line {
+                width: 80%;
+                padding: 0 8px;
+                border-bottom: 5px solid map-get($colors, white);
+            }
+
+            .codetxta {
+                font-family: 'robotoregular', sans-serif;
+                font-size: 0.9em;
+                text-align: center;
+                padding: 0 5px 10px;
+            }
+            padding: 28px 50px;
+            color: map-get($colors, white);
+        }
+        padding: 0;
+    }
+}

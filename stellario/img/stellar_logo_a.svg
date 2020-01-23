@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="192.19127mm"
+   height="160.24214mm"
+   viewBox="0 0 192.19127 160.24214"
+   version="1.1"
+   id="svg980"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="stellar_logo_a.svg">
+  <defs
+     id="defs974" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="419.19279"
+     inkscape:cy="278.79872"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata977">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-7.469844,-21.08726)">
+    <g
+       id="g1678">
+      <g
+         inkscape:label="Layer 1"
+         id="layer1-3-9"
+         transform="matrix(0.97795438,0,0,0.97795438,39.952247,-884.06569)">
+        <g
+           id="g4580-1"
+           transform="matrix(1.0457584,0,0,1.0457584,-332.38362,843.58593)">
+          <circle
+             id="path12976-2-0"
+             style="opacity:1;fill:none;fill-opacity:1;stroke:#7974ab;stroke-width:10.62992096;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             cx="380.0408"
+             cy="138.86453"
+             r="52.059669" />
+          <circle
+             id="path14158-8-3"
+             style="opacity:1;fill:#7974ab;fill-opacity:1;stroke:none;stroke-width:0.22677165;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             cx="380.0408"
+             cy="138.86453"
+             r="12.093414" />
+          <circle
+             id="path14158-8-2-5"
+             style="opacity:1;fill:#7974ab;fill-opacity:1;stroke:none;stroke-width:0.17258732;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             cx="380.0408"
+             cy="87.588593"
+             r="9.2038403" />
+          <rect
+             y="91.755264"
+             x="376.70746"
+             height="45.833332"
+             width="6.6666665"
+             id="rect4578-9"
+             style="opacity:1;fill:#7974ab;fill-opacity:1;stroke:none;stroke-width:0.22677165;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+      </g>
+      <text
+         id="text897-4"
+         y="181.1189"
+         x="6.7067528"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.31349182px;line-height:10.00000015%;font-family:Lato;-inkscape-font-specification:'Lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.97351253px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.31349182px;font-family:Lato;-inkscape-font-specification:'Lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:1.97351253px"
+           y="181.1189"
+           x="6.7067528"
+           id="tspan895-8"
+           sodipodi:role="line">Stellar Networks</tspan></text>
+    </g>
+  </g>
+</svg>

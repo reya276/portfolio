@@ -1,0 +1,890 @@
+@font-face {
+  font-family: 'roboto_slabbold';
+  src: url("./../fonts/roboto_slab/robotoslab-bold-webfont.woff2") format("woff2"), url("./../fonts/roboto_slab/robotoslab-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'roboto_slabregular';
+  src: url("./../fonts/roboto_slab/robotoslab-regular-webfont.woff2") format("woff2"), url("./../fonts/roboto_slab/robotoslab-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'roboto_slablight';
+  src: url("./../fonts/roboto_slab/robotoslab-light-webfont.woff2") format("woff2"), url("./../fonts/roboto_slab/robotoslab-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'robotobold';
+  src: url("./../fonts/roboto-bold-webfont.woff2") format("woff2"), url("./../fonts/roboto-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'robotomedium';
+  src: url("./../fonts/roboto-medium-webfont.woff2") format("woff2"), url("./../fonts/roboto-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'robotoregular';
+  src: url("./../fonts/roboto-regular-webfont.woff2") format("woff2"), url("./../fonts/roboto-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "robotoregular", Helvetica, sans-serif;
+  font: 75%/150%; }
+  body a {
+    color: #000000;
+    text-decoration: none; }
+  body a:hover {
+    text-decoration: none; }
+  body section {
+    margin: 0;
+    padding: 0; }
+
+.container {
+  padding: 0 90px;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  text-align: left; }
+  .container #topmain {
+    float: left;
+    width: 100%;
+    height: 100px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    text-align: left; }
+    .container #topmain #headerbar {
+      padding: 0 90px; }
+      .container #topmain #headerbar .headerbartxt {
+        float: right;
+        text-align: right;
+        color: #fff;
+        font-family: "roboto_slabregular", Helvetica, sans-serif;
+        font-size: 16px;
+        height: auto; }
+        .container #topmain #headerbar .headerbartxt .numbold {
+          font-family: "roboto_slabbold", Helvetica, sans-serif;
+          color: #38bcdb; }
+      .container #topmain #headerbar .logo {
+        float: left;
+        width: auto;
+        height: 75px;
+        text-align: left;
+        padding-top: 10px;
+        vertical-align: middle; }
+
+.codehero {
+  float: left;
+  background-image: url("./../img/code_hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  padding: 110px 90px;
+  width: 100%;
+  height: 550px;
+  color: #ffffff; }
+
+#learnblock {
+  float: left;
+  width: 380px;
+  height: 386px; }
+
+.learntxt {
+  float: left;
+  font-family: 'robotobold', Helvetica, sans-serif;
+  font-size: 48px;
+  color: #ffffff;
+  text-align: left;
+  padding-top: 10px;
+  line-height: 1.0; }
+
+.learnsmtxt {
+  float: left;
+  float: left;
+  font-family: 'roboto_slabregular', Helvetica, sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 30px; }
+
+.learnsmtxtb {
+  float: right;
+  font-family: 'roboto_slabregular', Helvetica, sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 4px solid #ffffff; }
+
+#codeblock {
+  float: right;
+  width: 426px;
+  height: 386px; }
+
+.coding {
+  float: right;
+  float: right; }
+
+.codetitle {
+  font-family: "robotobold", Helvetica, sans-serif;
+  text-align: right;
+  font-size: 32px;
+  color: #38bcdb; }
+
+.codetxt {
+  font-family: 'robotoregular', sans-serif;
+  font-size: 20px;
+  text-align: right;
+  border-bottom: 4px solid #38bcdb; }
+
+.analytics {
+  float: right;
+  text-align: right;
+  width: 100%;
+  height: auto;
+  color: #ffffff;
+  margin-top: 50px; }
+
+.analyticstitle {
+  font-family: "robotobold", Helvetica, sans-serif;
+  font-size: 32px;
+  text-align: right;
+  color: #ffffff; }
+
+.analyticstxt {
+  font-family: 'robotoregular', sans-serif;
+  font-size: 20px;
+  text-align: right;
+  border-bottom: 4px solid #FFFFFF; }
+
+#programinfo {
+  width: 100%;
+  height: 184px;
+  float: left;
+  background-color: #dcdcdc;
+  padding: 8px;
+  border-radius: 4px;
+  radius: 4px;
+  opacity: 0.9; }
+  #programinfo .info {
+    font-family: 'robotobold', Helvetica, sans-serif;
+    font-size: 28px;
+    color: #000000;
+    text-align: center; }
+  #programinfo .steps {
+    font-family: 'robotoregular', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    text-align: center; }
+  #programinfo #infofrm {
+    text-align: center;
+    padding: 8px; }
+    #programinfo #infofrm .fields {
+      display: inline;
+      padding: 0;
+      font-family: 'robotoregular', sans-serif;
+      font-size: 22px;
+      text-align: center; }
+    #programinfo #infofrm input {
+      width: 46.5%;
+      border-bottom: 2px solid #000000;
+      padding: 0;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      background-color: #dcdcdc;
+      text-align: center; }
+    #programinfo #infofrm #fname {
+      margin-right: 5px; }
+    #programinfo #infofrm #lname {
+      margin-left: 5px; }
+    #programinfo #infofrm #continuebt {
+      text-align: center;
+      padding-top: 8px; }
+      #programinfo #infofrm #continuebt .button {
+        width: 98%;
+        height: auto;
+        font-family: 'robotobold', Helvetica, sans-serif;
+        font-size: 32px;
+        background-color: #38bcdb;
+        color: #ffffff;
+        padding: 0;
+        border-radius: 4px;
+        radius: 4px;
+        border: 0;
+        cursor: pointer; }
+      #programinfo #infofrm #continuebt .button:hover {
+        width: 98%;
+        height: auto;
+        font-family: 'robotobold', Helvetica, sans-serif;
+        font-size: 32px;
+        background-color: #2e91a3;
+        color: #ffffff;
+        padding: 0;
+        border-radius: 4px;
+        radius: 4px;
+        border: 0;
+        cursor: pointer; }
+      #programinfo #infofrm #continuebt .circle {
+        width: 24px;
+        height: 24px;
+        margin: -3px 0 0 -3px;
+        color: #ffffff; }
+
+#featuring {
+  width: 100%;
+  background-image: url("./../img/featuring.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #dcdcdc;
+  text-align: center;
+  padding: 30px 90px; }
+  #featuring .featuretitle {
+    font-family: 'robotomedium', Helvetica, sans-serif;
+    font-size: 40px;
+    color: #ffffff;
+    padding-top: 20px;
+    text-decoration: underline;
+    text-align: center; }
+  #featuring .mdevice {
+    width: auto;
+    height: 500px; }
+  #featuring .learnapps {
+    text-align: center;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    color: #ffffff; }
+  #featuring .datacoding {
+    width: 94px;
+    height: 94px;
+    margin: 5px 0; }
+  #featuring .careers {
+    float: left;
+    text-align: center;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    color: #ffffff; }
+  #featuring .benefits {
+    width: 88px;
+    height: 88px;
+    margin: 5px 0 10px; }
+  #featuring .study {
+    text-align: center;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    color: #ffffff; }
+  #featuring .schedule {
+    width: 88px;
+    height: 88px;
+    margin: 5px 0 10px; }
+  #featuring .projects {
+    text-align: center;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    color: #ffffff; }
+  #featuring .datasets {
+    width: 88px;
+    height: 88px;
+    margin: 5px 0; }
+  #featuring .smtxt {
+    font-size: 0.8em;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 20px; }
+
+#ourstory {
+  width: 100%;
+  height: 375px;
+  background-image: url("./../img/about.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  padding: 60px 90px; }
+  #ourstory .story {
+    font-family: 'robotomedium', Helvetica, sans-serif;
+    font-size: 40px;
+    color: #38bcdb;
+    text-decoration: underline;
+    text-align: center; }
+  #ourstory .dev {
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    font-size: 23px;
+    color: #ffffff; }
+
+#faqsect {
+  width: 100%;
+  height: 580px;
+  padding: 0 90px;
+  background-color: #dcdcdc;
+  background-image: url("./../img/faq.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 0;
+  background-position-x: 65%; }
+  #faqsect .faqtitle {
+    width: 60%;
+    font-family: 'robotomedium', Helvetica, sans-serif;
+    font-size: 38px;
+    color: #000000;
+    text-decoration: underline;
+    text-align: left;
+    padding: 20px 0; }
+  #faqsect #questions {
+    float: left;
+    width: 60%;
+    height: auto; }
+    #faqsect #questions .faqlist {
+      width: auto;
+      height: auto;
+      font-family: 'roboto_slablight', Helvetica, sans-serif;
+      font-size: 18px;
+      color: #000000; }
+    #faqsect #questions ul li.limg {
+      list-style: none;
+      position: relative;
+      padding: 5px 0; }
+    #faqsect #questions a,
+    #faqsect #questions ul li.limg {
+      padding: -5px 10px;
+      color: #000000;
+      text-decoration: none; }
+    #faqsect #questions ul li.limg > a:before {
+      content: url("./../img/icons/arrow-right.png");
+      background-color: #38bcdb;
+      padding-top: 2px;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      top: 6px;
+      left: -30px; }
+    #faqsect #questions ul li.limgtg {
+      list-style: none;
+      position: relative;
+      padding: 5px 0; }
+    #faqsect #questions ul li.limgtg > a:before {
+      content: url("./../img/icons/arrow-right.png");
+      background-color: #38bcdb;
+      padding-top: 2px;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      top: 6px;
+      left: -30px; }
+    #faqsect #questions ul li.limgtg > a:before {
+      content: url("./../img/icons/arrow-down.png");
+      padding: -5px 10px;
+      background-color: #000000;
+      margin-top: -3px; }
+    #faqsect #questions li.linindent {
+      position: relative;
+      top: -20px;
+      left: 30px;
+      list-style-type: disc;
+      padding: 3px 0;
+      font-size: 14px;
+      width: auto;
+      height: auto;
+      padding-right: 15px; }
+    #faqsect #questions .faqtxt {
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      font-size: 14px;
+      color: #000000; }
+
+#footer {
+  width: 100%;
+  height: 200px;
+  padding: 40px 90px;
+  background-color: #88d7e8; }
+  #footer .footerlogo {
+    float: left;
+    width: 300px;
+    height: 98px;
+    text-align: left; }
+  #footer .footertxt {
+    float: right;
+    width: auto;
+    height: auto;
+    text-align: right;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    font-size: 14px;
+    color: #000000; }
+  #footer a {
+    padding-bottom: 40px;
+    font-family: 'roboto_slabregular', Helvetica, sans-serif;
+    font-size: 14px;
+    color: #000000; }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .row {
+    padding: 0;
+    margin: 0; }
+  .col {
+    padding: 0; }
+  #toptxt {
+    height: auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #000000;
+    border: 0; }
+    #toptxt .headerbartxt {
+      color: #ffffff;
+      font-size: 0.8em;
+      font-family: "robotoregular" Helvetica,sans-serif;
+      padding: 0; }
+      #toptxt .headerbartxt .numbold {
+        color: #38bcdb; }
+  #topmain {
+    padding: 0 60px;
+    height: auto;
+    background-color: #000000; }
+    #topmain .logodiv {
+      padding: 10px 0;
+      text-align: center; }
+      #topmain .logodiv .logo {
+        width: 200px;
+        height: 75px; }
+  #carousel {
+    padding: 0; }
+    #carousel .codingabg {
+      height: 280px;
+      background-image: url("./../img/mobile/code_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codingbbg {
+      height: 280px;
+      background-image: url("./../img/mobile/data_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codinga,
+    #carousel .codingb {
+      padding: 60px 50px;
+      color: #ffffff; }
+      #carousel .codinga .learntxta,
+      #carousel .codingb .learntxta {
+        font-family: 'robotobold', Helvetica, sans-serif;
+        font-size: 1.5em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .learnsmtxtc,
+      #carousel .codingb .learnsmtxtc {
+        position: relative;
+        width: auto;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        font-size: 1em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .codinga-line,
+      #carousel .codingb .codinga-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #38bcdb; }
+      #carousel .codinga .codingb-line,
+      #carousel .codingb .codingb-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #ffffff; }
+      #carousel .codinga .codetxta,
+      #carousel .codingb .codetxta {
+        font-family: 'robotoregular', sans-serif;
+        font-size: 0.9em;
+        text-align: center;
+        padding: 0 5px 10px; }
+  #programinfo {
+    height: auto;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    opacity: 1; }
+    #programinfo .info {
+      font-family: 'robotobold', Helvetica, sans-serif;
+      font-size: 28px;
+      color: #000000;
+      text-align: center; }
+    #programinfo .steps {
+      font-family: 'robotoregular', sans-serif;
+      font-size: 16px;
+      color: #000000;
+      text-align: center; }
+    #programinfo #infofrm {
+      text-align: center;
+      padding: 0; }
+      #programinfo #infofrm .fields {
+        display: inline;
+        padding: 5px;
+        font-family: 'robotoregular', sans-serif;
+        font-size: 20px;
+        text-align: center; }
+      #programinfo #infofrm input {
+        width: 42%;
+        border-bottom: 2px solid #000000;
+        background-color: #ffffff;
+        padding: 5px;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        text-align: center; }
+      #programinfo #infofrm #fname {
+        margin-right: 5px; }
+      #programinfo #infofrm #lname {
+        margin-left: 5px; }
+      #programinfo #infofrm #continuebt {
+        text-align: center;
+        padding: 20px; }
+        #programinfo #infofrm #continuebt .button {
+          width: 98%;
+          height: 52px;
+          font-family: 'robotobold', Helvetica, sans-serif;
+          font-size: 24px;
+          background-color: #38bcdb;
+          color: #ffffff;
+          padding: 0;
+          border: 0;
+          cursor: pointer; }
+        #programinfo #infofrm #continuebt .button:hover {
+          width: 98%;
+          height: 52px;
+          font-family: 'robotobold', Helvetica, sans-serif;
+          font-size: 24px;
+          background-color: #2e91a3;
+          color: #ffffff;
+          padding: 0;
+          border: 0;
+          cursor: pointer; }
+        #programinfo #infofrm #continuebt .circle {
+          width: 24px;
+          height: 24px;
+          margin: -3px 0 0 -3px;
+          color: #ffffff; }
+  #featuring {
+    background-image: url("./../img/mobile/featuring_mobile.jpg");
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-color: #dcdcdc;
+    text-align: center;
+    padding: 10px 60px; }
+    #featuring .featuretitle {
+      font-family: 'robotomedium', Helvetica, sans-serif;
+      font-size: 40px;
+      color: #ffffff;
+      text-decoration: underline;
+      text-align: center; }
+    #featuring .mdevice {
+      width: auto;
+      height: 349px; }
+    #featuring .learnapps {
+      text-align: center;
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      color: #ffffff; }
+    #featuring .datacoding {
+      width: 88px;
+      height: 88px;
+      margin: 5px 0; }
+    #featuring .careers {
+      text-align: center;
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      color: #ffffff; }
+    #featuring .benefits {
+      width: 88px;
+      height: 88px;
+      margin: 5px 0 10px; }
+    #featuring .study {
+      text-align: center;
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      color: #ffffff; }
+    #featuring .schedule {
+      width: 88px;
+      height: 88px;
+      margin: 5px 0; }
+    #featuring .projects {
+      text-align: center;
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      color: #ffffff; }
+    #featuring .datasets {
+      width: 88px;
+      height: 88px;
+      margin: 5px 0; }
+    #featuring .smtxt {
+      font-size: 0.8em; }
+  #ourstory {
+    background-image: url("./../img/mobile/about_mobile.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding: 110px 60px;
+    height: 100%; }
+    #ourstory .story {
+      font-family: 'robotomedium', Helvetica, sans-serif;
+      font-size: 40px;
+      color: #38bcdb;
+      text-decoration: underline;
+      text-align: center; }
+    #ourstory .dev {
+      padding: 45px 0;
+      text-align: center;
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      font-size: 23px;
+      color: #ffffff; }
+  #faqsect {
+    height: auto;
+    background-color: #dcdcdc;
+    background-image: url("./../img/mobile/fap_mobile.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    padding: 10px 60px; }
+    #faqsect .faqtitle {
+      font-family: 'robotomedium', Helvetica, sans-serif;
+      font-size: 40px;
+      color: #000000;
+      text-decoration: underline;
+      text-align: center;
+      padding-bottom: 15px;
+      width: 100%; }
+    #faqsect .faqlist {
+      width: auto;
+      height: auto;
+      font-family: 'roboto_slablight', Helvetica, sans-serif;
+      font-size: 18px;
+      color: #000000;
+      padding-bottom: 180px; }
+    #faqsect ul li.limg {
+      list-style: none;
+      position: relative;
+      padding: 5px 0; }
+    #faqsect a,
+    #faqsect ul li.limg {
+      padding: -5px 10px;
+      color: #000000;
+      text-decoration: none; }
+    #faqsect ul li.limg > a:before {
+      content: url("./../img/icons/arrow-right.png");
+      background-color: #38bcdb;
+      padding-top: 2px;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      top: 6px;
+      left: -30px; }
+    #faqsect ul li.limgtg {
+      list-style: none;
+      position: relative;
+      padding: 5px 0; }
+    #faqsect ul li.limgtg > a:before {
+      content: url("./../img/icons/arrow-right.png");
+      background-color: #38bcdb;
+      padding-top: 2px;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      top: 6px;
+      left: -30px; }
+    #faqsect ul li.limgtg > a:before {
+      content: url("./../img/icons/arrow-down.png");
+      padding: -5px 10px;
+      background-color: #000000;
+      margin-top: -3px; }
+    #faqsect li.linindent {
+      position: relative;
+      top: -20px;
+      left: 30px;
+      list-style-type: disc;
+      padding: 3px 0;
+      font-size: 14px;
+      width: auto;
+      height: auto;
+      padding-right: 15px; }
+    #faqsect .faqtxt {
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      font-size: 14px;
+      color: #000000; }
+  #footer {
+    height: auto;
+    padding: 0 0 30px;
+    text-align: center;
+    background-color: #88d7e8; }
+    #footer .footerlogom {
+      width: auto;
+      height: 98px;
+      text-align: center;
+      display: block;
+      margin: auto; }
+    #footer .footertxt {
+      width: 100%;
+      height: auto;
+      padding-top: 10px;
+      text-align: center;
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      font-size: 14px;
+      color: #000000; }
+    #footer a {
+      padding-bottom: 40px;
+      font-family: 'roboto_slabregular', Helvetica, sans-serif;
+      font-size: 14px;
+      color: #000000; } }
+
+@media (max-device-width: 320px) {
+  #carousel {
+    padding: 0; }
+    #carousel .codingabg {
+      height: 280px;
+      background-image: url("./../img/mobile/code_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codingbbg {
+      height: 280px;
+      background-image: url("./../img/mobile/data_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codinga,
+    #carousel .codingb {
+      padding: 28px 50px;
+      color: #ffffff; }
+      #carousel .codinga .learntxta,
+      #carousel .codingb .learntxta {
+        font-family: 'robotobold', Helvetica, sans-serif;
+        font-size: 1.5em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .learnsmtxtc,
+      #carousel .codingb .learnsmtxtc {
+        position: relative;
+        width: auto;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        font-size: 1em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .codinga-line,
+      #carousel .codingb .codinga-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #38bcdb; }
+      #carousel .codinga .codingb-line,
+      #carousel .codingb .codingb-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #ffffff; }
+      #carousel .codinga .codetxta,
+      #carousel .codingb .codetxta {
+        font-family: 'robotoregular', sans-serif;
+        font-size: 0.9em;
+        text-align: center;
+        padding: 0 5px 10px; } }
+
+@media (max-device-width: 360px) {
+  #carousel {
+    padding: 0; }
+    #carousel .codingabg {
+      height: 280px;
+      background-image: url("./../img/mobile/code_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codingbbg {
+      height: 280px;
+      background-image: url("./../img/mobile/data_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codinga,
+    #carousel .codingb {
+      padding: 28px 50px;
+      color: #ffffff; }
+      #carousel .codinga .learntxta,
+      #carousel .codingb .learntxta {
+        font-family: 'robotobold', Helvetica, sans-serif;
+        font-size: 1.5em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .learnsmtxtc,
+      #carousel .codingb .learnsmtxtc {
+        position: relative;
+        width: auto;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        font-size: 1em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .codinga-line,
+      #carousel .codingb .codinga-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #38bcdb; }
+      #carousel .codinga .codingb-line,
+      #carousel .codingb .codingb-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #ffffff; }
+      #carousel .codinga .codetxta,
+      #carousel .codingb .codetxta {
+        font-family: 'robotoregular', sans-serif;
+        font-size: 0.9em;
+        text-align: center;
+        padding: 0 5px 10px; } }
+
+@media (max-device-width: 375px) {
+  #carousel {
+    padding: 0; }
+    #carousel .codingabg {
+      height: 280px;
+      background-image: url("./../img/mobile/code_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codingbbg {
+      height: 280px;
+      background-image: url("./../img/mobile/data_mobile_hero.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #carousel .codinga,
+    #carousel .codingb {
+      padding: 28px 50px;
+      color: #ffffff; }
+      #carousel .codinga .learntxta,
+      #carousel .codingb .learntxta {
+        font-family: 'robotobold', Helvetica, sans-serif;
+        font-size: 1.5em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .learnsmtxtc,
+      #carousel .codingb .learnsmtxtc {
+        position: relative;
+        width: auto;
+        font-family: 'roboto_slabregular', Helvetica, sans-serif;
+        font-size: 1em;
+        color: #ffffff;
+        text-align: center; }
+      #carousel .codinga .codinga-line,
+      #carousel .codingb .codinga-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #38bcdb; }
+      #carousel .codinga .codingb-line,
+      #carousel .codingb .codingb-line {
+        width: 80%;
+        padding: 0 8px;
+        border-bottom: 5px solid #ffffff; }
+      #carousel .codinga .codetxta,
+      #carousel .codingb .codetxta {
+        font-family: 'robotoregular', sans-serif;
+        font-size: 0.9em;
+        text-align: center;
+        padding: 0 5px 10px; } }

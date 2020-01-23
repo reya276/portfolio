@@ -1,0 +1,34 @@
+<?php
+
+// DB connection
+include "db_conn.php";
+
+//form Vars
+$getorder = $_GET["order_id"];
+$getQueryB = "";
+$itemresults = "";
+$itemshipping = "";
+$itemsdata = array();
+if (isset($getorder) && $getorder != "") {
+    //Get the Order items
+        $getQueryB = "SELECT wwoi.order_id,wwoi.order_item_id AS itemid,wwoi.order_item_name AS OIName,wwoi2.order_item_id,wwoi2.meta_key,wwoi2.meta_value AS OQty,
+                      (SELECT post_name FROM wp_posts wp WHERE wp.post_title = wwoi.order_item_name) as 'post_slug'
+                      FROM wp_woocommerce_order_items wwoi INNER JOIN wp_woocommerce_order_itemmeta wwoi2 ON wwoi.order_item_id = wwoi2.order_item_id
+                      WHERE wwoi.order_id = '".$getorder."' and wwoi2.meta_key = '_qty'
+                      GROUP BY wwoi.order_item_id";
+    //Items
+    if ($itemresults = $connProd->query($getQueryB)) {
+
+        foreach($itemresults as $row) {
+            $itemsdata['status'] = 'ok';
+            $itemsdata[] = $row;
+        }
+
+    }
+
+}
+//Close DB connection
+$connProd->close();
+//encode data into json for items
+echo json_encode($itemsdata);
+?>

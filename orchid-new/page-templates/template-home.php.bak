@@ -1,0 +1,97 @@
+<?php
+/**
+ * Template Name: Home Page Template
+ *
+ * @package WordPress
+ * @subpackage Twenty_Fourteen
+ * @since Twenty Fourteen 1.0
+ */
+
+get_header(); ?>
+
+<style>.tp-tabs.inner.news-header.nav-pos-hor-right.nav-pos-ver-bottom.nav-dir-vertical {
+    display: none !important;
+}</style>
+
+<?php echo do_shortcode('[rev_slider alias="explore2"]'); ?>
+
+
+
+
+
+<section class="index-main-content">
+	<div class="container normal">
+        <h1 class="text-center index-text"><?php the_field('welcome_text'); ?></h1>
+        <p class="text-center under-title"><?php the_field('welcome_text_subtile'); ?></p>
+        <ul class="products-list1 mb0">
+            <li><a href="<?php echo get_page_link(21); ?>">Personal Lines</a></li>
+            <li><a href="<?php echo get_page_link(23); ?>">Commercial Lines</a></li>
+            <li><a href="<?php echo get_page_link(25); ?>">Specialty High Net Worth</a></li>
+            <li><a href="<?php echo get_page_link(27); ?>">Yacht Coverage</a></li>
+        </ul>
+    </div>
+</section>
+
+
+<section class="main-content first style1">
+    <div class="container normal">
+        <div class="widget5">
+            <div class="row">
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div class="thumb-img"><img src="<?php the_field('products_image'); ?>" class="img-responsive"></div>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="widget-content clearfix">
+                        <h4 class="text-center">Products</h4>
+                        <p><?php the_field('products_text'); ?></p>
+                        <p class="text-center more"><a href="<?php echo get_page_link(8); ?>" class="btn btn-primary btn-lg">Learn More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main-content second style1">
+    <div class="container normal">
+        <div class="widget5">
+            <div class="row">
+                <div class="col-xs-12 col-sm-7 col-sm-push-5 col-md-7 col-md-push-5 col-lg-7 col-lg-push-5">
+                    <div class="thumb-img"><img src="<?php the_field('agent_image'); ?>" class="img-responsive"></div>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-sm-pull-7 col-md-5 col-md-pull-7 col-lg-5 col-lg-pull-7">
+                    <div class="widget-content clearfix">
+                        <h4 class="text-center">Become an Agent</h4>
+                        <p><?php the_field('agent_text'); ?></p>
+                        <p class="text-center more"><a href="<?php echo get_page_link(10); ?>" class="btn btn-primary btn-lg">Learn More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="main-content shadow style1">
+    <div class="container normal">
+        <div class="widget5">
+            <div class="row">
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div class="thumb-img"><img src="<?php the_field('about_image'); ?>" class="img-responsive"></div>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="widget-content clearfix">
+                        <h4 class="text-center">About Us</h4>
+                        <p><?php the_field('about_text'); ?></p>
+                        <p class="text-center more"><a href="<?php echo get_page_link(88); ?>" class="btn btn-primary btn-lg">Learn More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<?php get_footer(); ?>

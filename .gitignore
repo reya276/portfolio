@@ -1,0 +1,4 @@
+*.log
+/dbaccounting/.htaccess
+/dbaccounting/reports/
+out
