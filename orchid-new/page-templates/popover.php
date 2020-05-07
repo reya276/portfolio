@@ -1,19 +1,17 @@
 
 <?php
 global $wpdb;
-// $servername = "localhost";
-// $username = "root";
-// $password = "kmRX;m=8Q0WCL{b&";
-//$dbname = "orchidin_wpsite";
 
-$servername = "localhost";
-$username = "wordpressuser";
-$password = "WordDev918!";
+
+$servername = "";
+$username = "";
+$password = "";
+$dbname = "";
 
 //create variable with initial value from selected state list
 $post_id = intval($_GET['post_id']);
 //create the DB connection
-$conn = new mysqli('localhost','wordpressuser','WordDev918!','wordpress2');
+$conn = new mysqli($servername,$username,$password,$dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
